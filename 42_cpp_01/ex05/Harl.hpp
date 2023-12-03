@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.hpp                                         :+:      :+:    :+:   */
+/*   Harl.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: htouil <htouil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/26 22:28:53 by htouil            #+#    #+#             */
-/*   Updated: 2023/12/02 16:56:06 by htouil           ###   ########.fr       */
+/*   Created: 2023/12/02 15:32:48 by htouil            #+#    #+#             */
+/*   Updated: 2023/12/02 17:37:15 by htouil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ZOMBIE_H
-# define ZOMBIE_H
+#ifndef HARL_H
+# define HARL_H
 
 # include <iostream>
 
@@ -25,20 +25,20 @@
 # define GREY    "\033[90m"
 # define WHITE   "\033[37m"
 
-class Zombie
+class Harl
 {
 	private:
-		std::string	name;
+		void	debug(void);
+		void	info(void);
+		void	warning(void);
+		void	error(void);
 	public:
-		Zombie(std::string newName);
-		Zombie(const Zombie &src);
-		Zombie		&operator=(const Zombie &src);
-		~Zombie();
-
-		void		announce();
+		Harl();
+		Harl(const Harl &src);
+		Harl	&operator=(const Harl &src);
+		~Harl();
+		
+		void	complain(std::string level);
 };
-
-Zombie	*newZombie(std::string name);
-void	randomChump(std::string name);
 
 #endif

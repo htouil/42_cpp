@@ -6,7 +6,7 @@
 #    By: htouil <htouil@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/01 16:15:53 by htouil            #+#    #+#              #
-#    Updated: 2023/12/01 19:34:18 by htouil           ###   ########.fr        #
+#    Updated: 2023/12/03 16:01:02 by htouil           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ SRCS	= main.cpp
 
 OBJS	= $(SRCS:.cpp=.o)
 
-CPPC	= g++
+CPPC	= c++
 
 FLAGS	= -Wall -Wextra -Werror -std=c++98
 

@@ -5,14 +5,14 @@
 #                                                     +:+ +:+         +:+      #
 #    By: htouil <htouil@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/11/26 22:27:52 by htouil            #+#    #+#              #
-#    Updated: 2023/12/03 16:01:34 by htouil           ###   ########.fr        #
+#    Created: 2023/12/02 15:32:17 by htouil            #+#    #+#              #
+#    Updated: 2023/12/03 16:00:57 by htouil           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	= zombie
+NAME	= harl
 
-SRCS	= main.cpp Zombie.cpp newZombie.cpp randomChump.cpp
+SRCS	= main.cpp Harl.cpp
 
 OBJS	= $(SRCS:.cpp=.o)
 

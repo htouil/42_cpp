@@ -6,7 +6,7 @@
 /*   By: htouil <htouil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/29 17:40:36 by htouil            #+#    #+#             */
-/*   Updated: 2023/11/30 17:53:22 by htouil           ###   ########.fr       */
+/*   Updated: 2023/12/02 17:10:06 by htouil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,6 @@ int	main()
 	std::cout << CYAN << "Value of:" << RESET << std::endl;
 	std::cout << GREEN << "  The string: " << RESET << speech << std::endl;
 	std::cout << GREEN << "  The pointer: " << RESET << *stringPTR << std::endl;
-	std::cout << GREEN << "  The reference: " << RESET << stringREF << std::endl << std::endl;
+	std::cout << GREEN << "  The reference: " << RESET << stringREF << std::endl;
 	return (0);
 }

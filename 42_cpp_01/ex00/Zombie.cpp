@@ -6,13 +6,13 @@
 /*   By: htouil <htouil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/26 22:34:31 by htouil            #+#    #+#             */
-/*   Updated: 2023/11/30 18:20:40 by htouil           ###   ########.fr       */
+/*   Updated: 2023/12/02 16:55:47 by htouil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
 
-Zombie::Zombie()
+Zombie::Zombie(std::string newName) : name(newName)
 {
 	return ;
 }
@@ -40,9 +40,4 @@ void	Zombie::announce()
 	std::cout << "Rise and shine my new zombie!" << std::endl;
 	std::cout << "  " << CYAN << this->name << RESET << ": BraiiiiiiinnnzzzZ..." << std::endl;
 	return ;
-}
-
-std::string	&Zombie::value()
-{
-	return (this->name);
 }

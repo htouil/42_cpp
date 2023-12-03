@@ -6,7 +6,7 @@
 #    By: htouil <htouil@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/27 21:38:08 by htouil            #+#    #+#              #
-#    Updated: 2023/11/29 17:57:44 by htouil           ###   ########.fr        #
+#    Updated: 2023/12/03 16:01:26 by htouil           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ SRCS	= main.cpp Zombie.cpp zombieHorde.cpp
 
 OBJS	= $(SRCS:.cpp=.o)
 
-CPPC	= g++
+CPPC	= c++
 
 FLAGS	= -Wall -Wextra -Werror -std=c++98
 

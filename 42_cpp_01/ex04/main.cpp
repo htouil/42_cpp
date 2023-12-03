@@ -6,7 +6,7 @@
 /*   By: htouil <htouil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 16:16:01 by htouil            #+#    #+#             */
-/*   Updated: 2023/12/01 22:56:40 by htouil           ###   ########.fr       */
+/*   Updated: 2023/12/02 17:31:13 by htouil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ int	change(std::string filename, std::string search, std::string replace)
 	std::string	final_str;
 	size_t		pos;
 	size_t		here;
-	size_t		len;
 
 	
 	new_str = "\0";
@@ -76,7 +75,7 @@ int	main(int ac, char **av)
 	
 	if (ac != 4)
 	{
-		std::cerr << "Error!" << std::endl << "Bad number of parameters inserted." << std::endl;
+		std::cerr << "Error!" << std::endl << "Bad number of parameters inserted." << std::endl << "Usage: ./fcopy <filename> <s1> <s2>" << std::endl;
 		return (1);
 	}
 	if (change(av[1], av[2], av[3]) == 1)

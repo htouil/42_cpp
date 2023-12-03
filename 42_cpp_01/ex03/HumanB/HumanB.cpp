@@ -6,7 +6,7 @@
 /*   By: htouil <htouil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 18:36:18 by htouil            #+#    #+#             */
-/*   Updated: 2023/11/30 20:27:37 by htouil           ###   ########.fr       */
+/*   Updated: 2023/12/02 17:21:43 by htouil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 HumanB::HumanB(std::string name) : nameB(name)
 {
+	this->WeaponB = NULL;
 	return ;
 }
 

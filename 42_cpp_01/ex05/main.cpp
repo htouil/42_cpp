@@ -1,20 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   randomChump.cpp                                    :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: htouil <htouil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/27 20:10:40 by htouil            #+#    #+#             */
-/*   Updated: 2023/12/02 16:55:04 by htouil           ###   ########.fr       */
+/*   Created: 2023/12/02 15:32:55 by htouil            #+#    #+#             */
+/*   Updated: 2023/12/02 16:27:49 by htouil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include "Harl.hpp"
 
-void	randomChump(std::string name)
+int	main()
 {
-	Zombie	tmp(name);
+	Harl	harl;
 
-	tmp.announce();
+	harl.complain("ERROR");
+	std::cout << "------------------------------------" << std::endl;
+	harl.complain("WARNING");
+	std::cout << "------------------------------------" << std::endl;
+	harl.complain("INFO");
+	std::cout << "------------------------------------" << std::endl;
+	harl.complain("DEBUG");
+	return (0);
 }
