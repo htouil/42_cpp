@@ -5,14 +5,14 @@
 #                                                     +:+ +:+         +:+      #
 #    By: htouil <htouil@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/12/09 14:49:00 by htouil            #+#    #+#              #
-#    Updated: 2023/12/13 17:17:47 by htouil           ###   ########.fr        #
+#    Created: 2023/12/13 16:35:08 by htouil            #+#    #+#              #
+#    Updated: 2023/12/13 17:22:34 by htouil           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	= clap
+NAME	= frag
 
-SRCS	= main.cpp ClapTrap/ClapTrap.cpp
+SRCS	= main.cpp ClapTrap/ClapTrap.cpp ScavTrap/ScavTrap.cpp FragTrap/FragTrap.cpp
 
 OBJS	= $(SRCS:.cpp=.o)
 

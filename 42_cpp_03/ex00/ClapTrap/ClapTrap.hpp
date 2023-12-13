@@ -6,12 +6,12 @@
 /*   By: htouil <htouil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 14:50:01 by htouil            #+#    #+#             */
-/*   Updated: 2023/12/09 17:31:14 by htouil           ###   ########.fr       */
+/*   Updated: 2023/12/13 16:37:03 by htouil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CLAPTRAP_H
-# define CLAPTRAP_H
+#ifndef CLAPTRAP_HPP
+# define CLAPTRAP_HPP
 
 # include <iostream>
 
@@ -33,6 +33,7 @@ class ClapTrap
 		int			energy;
 		int			damage;
 	public:
+					ClapTrap();
 					ClapTrap(std::string character);
 					ClapTrap(const ClapTrap &src);
 		ClapTrap	&operator=(const ClapTrap &src);

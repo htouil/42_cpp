@@ -5,14 +5,14 @@
 #                                                     +:+ +:+         +:+      #
 #    By: htouil <htouil@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/12/09 14:49:00 by htouil            #+#    #+#              #
-#    Updated: 2023/12/13 17:17:47 by htouil           ###   ########.fr        #
+#    Created: 2023/12/12 14:46:34 by htouil            #+#    #+#              #
+#    Updated: 2023/12/13 17:19:02 by htouil           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	= clap
+NAME	= scav
 
-SRCS	= main.cpp ClapTrap/ClapTrap.cpp
+SRCS	= main.cpp ClapTrap/ClapTrap.cpp ScavTrap/ScavTrap.cpp
 
 OBJS	= $(SRCS:.cpp=.o)
 
