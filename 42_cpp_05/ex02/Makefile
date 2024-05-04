@@ -6,13 +6,14 @@
 #    By: htouil <htouil@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/16 17:24:27 by htouil            #+#    #+#              #
-#    Updated: 2024/04/26 23:58:01 by htouil           ###   ########.fr        #
+#    Updated: 2024/05/02 16:57:20 by htouil           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= Exec
 
-SRCS	= main.cpp Bureaucrat/Bureaucrat.cpp AForm/AForm.cpp ShrubberyCreationForm/ShrubberyCreationForm.cpp
+SRCS	= main.cpp Bureaucrat/Bureaucrat.cpp AForm/AForm.cpp \
+		ShrubberyCreationForm/ShrubberyCreationForm.cpp RobotomyRequestForm/RobotomyRequestForm.cpp
 
 OBJS	= $(SRCS:.cpp=.o)
 

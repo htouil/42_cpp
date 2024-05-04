@@ -6,7 +6,7 @@
 /*   By: htouil <htouil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 17:42:24 by htouil            #+#    #+#             */
-/*   Updated: 2024/04/27 15:51:25 by htouil           ###   ########.fr       */
+/*   Updated: 2024/04/27 17:52:05 by htouil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,39 @@ AForm	&AForm::operator=(const AForm &src)
 AForm::~AForm()
 {
 	std::cout << CRIMSON << "AForm destructor called" << RESET << std::endl;
+}
+
+std::string	AForm::getName()
+{
+	return (this->name);
+}
+
+bool	AForm::getSign()
+{
+	return (this->signature);
+}
+
+int	AForm::getSignGrade()
+{
+	return (this->sign_grade);
+}
+
+int	AForm::getExecGrade()
+{
+	return (this->exec_grade);
+}
+
+const char	*AForm::GradeTooHighException::what() const throw()
+{
+	return ("The grade is too HIGH!");
+}
+
+const char	*AForm::GradeTooLowException::what() const throw()
+{
+	return ("The grade is too LOW!");
+}
+
+const char	*AForm::FormNotSigned::what() const throw()
+{
+	return ("The form is not signed!");
 }

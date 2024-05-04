@@ -6,20 +6,21 @@
 /*   By: htouil <htouil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 17:25:09 by htouil            #+#    #+#             */
-/*   Updated: 2024/04/27 15:53:47 by htouil           ###   ########.fr       */
+/*   Updated: 2024/05/04 15:47:51 by htouil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ShrubberyCreationForm.hpp"
 #include "../AForm/AForm.hpp"
+#include "../Bureaucrat/Bureaucrat.hpp"
 
-ShrubberyCreationForm::ShrubberyCreationForm(const std::string target) : AForm(target, 145, 137)
+ShrubberyCreationForm::ShrubberyCreationForm(const std::string target) : AForm("ShrubberyCreationForm", 145, 137), _target(target)
 {
 	std::cout << BROWN << "ShrubberyCreationForm constructor called" << RESET << std::endl;
 	this->signature = 0;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &src) : AForm(src)
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &src) : AForm(src), _target(src._target)
 {
 	std::cout << BROWN << "ShrubberyCreationForm copy constructor called" << RESET << std::endl;
 }
@@ -37,6 +38,14 @@ ShrubberyCreationForm::~ShrubberyCreationForm()
 	std::cout << BROWN << "ShrubberyCreationForm destructor called" << RESET << std::endl;
 }
 
+void	ShrubberyCreationForm::beSigned(Bureaucrat &signer)
+{
+	if (signer.getGrade() > this->sign_grade)
+		throw (GradeTooLowException());
+	else
+		this->signature = 1;
+}
+
 std::string	ascii_tree() 
 {
 	std::string	tree;
@@ -46,10 +55,10 @@ std::string	ascii_tree()
 		"       /  \\\n"
 		"      /    \\\n"
 		"     /      \\\n"
-		"    /        \\\n"
-		"   /----------\\\n"
-		"  /   CHAJARA  \\\n"
-		" /--------------\\\n"
+		"    /--------\\\n"
+		"   /  CHAJARA \\\n"
+		"  /------------\\\n"
+		" /              \\\n"
 		"/________________\\\n"
 		"        | |\n"
 		"        | |\n"
@@ -58,9 +67,20 @@ std::string	ascii_tree()
 	return (tree);
 }
 
-void	ShrubberyCreationForm::execute() const
+void	ShrubberyCreationForm::execute(const Bureaucrat &executor) const
 {
-	std::ofstream	outfile(this->name + "_shrubbery", std::ios::out);
+	if (this->signature == 0)
+	{
+		throw (FormNotSigned());
+		return ;
+	}
+	else if (executor.getGrade() > this->exec_grade)
+	{
+		throw (GradeTooLowException());
+		return ;
+	}
+
+	std::ofstream	outfile(this->_target + "_shrubbery", std::ios::out);
 	std::string		tree;
 
 	if (!outfile.is_open())

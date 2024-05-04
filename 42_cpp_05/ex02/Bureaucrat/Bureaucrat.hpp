@@ -6,7 +6,7 @@
 /*   By: htouil <htouil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 17:27:26 by htouil            #+#    #+#             */
-/*   Updated: 2024/04/26 16:59:27 by htouil           ###   ########.fr       */
+/*   Updated: 2024/04/27 19:03:29 by htouil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,19 +56,21 @@ class Bureaucrat
 		Bureaucrat		&operator=(const Bureaucrat &src);
 						~Bureaucrat();
 
-		void			setGrade(int s_grade);
-		std::string		getName() const;
-		int				getGrade() const;
-		void			incrementGrade();
-		void			decrementGrade();
+		void		setGrade(int s_grade);
+		std::string	getName() const;
+		int			getGrade() const;
+		void		incrementGrade();
+		void		decrementGrade();
+		void		signForm(AForm &src);
+		void		executeForm(AForm &src);
 
 		class GradeTooHighException : public std::exception
 		{
-			virtual const char *what() const throw();
+			virtual const char	*what() const throw();
 		};
 		class GradeTooLowException : public std::exception
 		{
-			virtual const char *what() const throw();
+			virtual const char	*what() const throw();
 		};
 };
 
