@@ -6,7 +6,7 @@
 /*   By: htouil <htouil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/05 14:53:07 by htouil            #+#    #+#             */
-/*   Updated: 2024/05/06 14:13:38 by htouil           ###   ########.fr       */
+/*   Updated: 2024/05/07 17:05:48 by htouil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "../AForm/AForm.hpp"
 #include "../Bureaucrat/Bureaucrat.hpp"
 
-PresidentialPardonForm::PresidentialPardonForm(const std::string target) : AForm("PresidentialPardonForm", 25, 5), _target(target)
+PresidentialPardonForm::PresidentialPardonForm(const std::string target) : AForm("Presidential Pardon", 25, 5), _target(target)
 {
 	std::cout << GOLD << "PresidentialPardonForm constructor called" << RESET << std::endl;
 	this->signature = 0;

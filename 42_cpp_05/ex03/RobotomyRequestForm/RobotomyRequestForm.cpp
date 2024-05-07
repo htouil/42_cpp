@@ -6,7 +6,7 @@
 /*   By: htouil <htouil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 16:56:20 by htouil            #+#    #+#             */
-/*   Updated: 2024/05/06 14:13:49 by htouil           ###   ########.fr       */
+/*   Updated: 2024/05/07 17:06:01 by htouil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "../AForm/AForm.hpp"
 #include "../Bureaucrat/Bureaucrat.hpp"
 
-RobotomyRequestForm::RobotomyRequestForm(const std::string target) : AForm("RobotomyRequestForm", 72, 45), _target(target)
+RobotomyRequestForm::RobotomyRequestForm(const std::string target) : AForm("Robotomy Request", 72, 45), _target(target)
 {
 	std::cout << SALMON << "RobotomyRequestForm constructor called" << RESET << std::endl;
 	this->signature = 0;

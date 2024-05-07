@@ -6,7 +6,7 @@
 /*   By: htouil <htouil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/17 17:25:09 by htouil            #+#    #+#             */
-/*   Updated: 2024/05/04 15:47:51 by htouil           ###   ########.fr       */
+/*   Updated: 2024/05/07 17:06:11 by htouil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "../AForm/AForm.hpp"
 #include "../Bureaucrat/Bureaucrat.hpp"
 
-ShrubberyCreationForm::ShrubberyCreationForm(const std::string target) : AForm("ShrubberyCreationForm", 145, 137), _target(target)
+ShrubberyCreationForm::ShrubberyCreationForm(const std::string target) : AForm("Shrubbery Creation", 145, 137), _target(target)
 {
 	std::cout << BROWN << "ShrubberyCreationForm constructor called" << RESET << std::endl;
 	this->signature = 0;

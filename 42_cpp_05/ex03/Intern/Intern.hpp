@@ -6,7 +6,7 @@
 /*   By: htouil <htouil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 15:36:08 by htouil            #+#    #+#             */
-/*   Updated: 2024/05/06 15:37:28 by htouil           ###   ########.fr       */
+/*   Updated: 2024/05/07 17:17:32 by htouil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,18 @@
 # define INTERN_HPP
 
 # include <iostream>
+# include "../AForm/AForm.hpp"
 
-class Intern 
+class Intern
+{
+	public:
+		
+				Intern();
+				Intern(const Intern &src);
+		Intern	&operator=(const Intern &src);
+				~Intern();
+
+		AForm	&makeForm(const std::string name, const std::string target);
+};
 
 #endif
