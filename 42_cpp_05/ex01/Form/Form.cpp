@@ -6,7 +6,7 @@
 /*   By: htouil <htouil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 20:38:56 by htouil            #+#    #+#             */
-/*   Updated: 2024/04/26 16:56:39 by htouil           ###   ########.fr       */
+/*   Updated: 2024/05/02 17:31:18 by htouil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,9 +65,9 @@ int	Form::getExecGrade()
 	return (this->exec_grade);
 }
 
-void	Form::beSigned(Bureaucrat &src)
+void	Form::beSigned(Bureaucrat &signer)
 {
-	if (src.getGrade() > this->sign_grade)
+	if (signer.getGrade() > this->sign_grade)
 		throw (GradeTooLowException());
 	else
 		this->signature = 1;

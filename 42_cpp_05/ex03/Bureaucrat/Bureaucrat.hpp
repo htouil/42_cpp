@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: htouil <htouil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/25 21:10:38 by htouil            #+#    #+#             */
-/*   Updated: 2024/04/27 17:41:40 by htouil           ###   ########.fr       */
+/*   Created: 2024/04/16 17:27:26 by htouil            #+#    #+#             */
+/*   Updated: 2024/04/27 19:03:29 by htouil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include <iostream>
 # include <stdexcept>
 # include <string>
-
 
 # define RESET       "\033[0m"
 # define RED         "\033[31m"
@@ -43,7 +42,7 @@
 # define TURQUOISE   "\033[38;5;45m"
 # define INDIGO      "\033[38;5;54m"
 
-class Form;
+class AForm;
 
 class Bureaucrat
 {
@@ -57,13 +56,14 @@ class Bureaucrat
 		Bureaucrat		&operator=(const Bureaucrat &src);
 						~Bureaucrat();
 
-		void			setGrade(int s_grade);
-		std::string		getName() const;
-		int				getGrade() const;
-		void			incrementGrade();
-		void			decrementGrade();
-		void			signForm(Form &src);
-	
+		void		setGrade(int s_grade);
+		std::string	getName() const;
+		int			getGrade() const;
+		void		incrementGrade();
+		void		decrementGrade();
+		void		signForm(AForm &src);
+		void		executeForm(AForm &src);
+
 		class GradeTooHighException : public std::exception
 		{
 			virtual const char	*what() const throw();
@@ -74,6 +74,6 @@ class Bureaucrat
 		};
 };
 
-std::ostream	&operator<<(std::ostream &out, Bureaucrat &src);
+std::ostream	&operator<<(std::ostream &out, const Bureaucrat &src);
 
 #endif

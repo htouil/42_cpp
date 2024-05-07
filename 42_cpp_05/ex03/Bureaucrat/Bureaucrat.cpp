@@ -5,13 +5,13 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: htouil <htouil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/25 21:10:31 by htouil            #+#    #+#             */
-/*   Updated: 2024/04/27 17:48:16 by htouil           ###   ########.fr       */
+/*   Created: 2024/04/16 17:27:18 by htouil            #+#    #+#             */
+/*   Updated: 2024/04/27 19:10:31 by htouil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
-#include "../Form/Form.hpp"
+#include "../AForm/AForm.hpp"
 
 Bureaucrat::Bureaucrat() : name("new guy"), grade(150)
 {
@@ -22,15 +22,9 @@ Bureaucrat::Bureaucrat(std::string b_name, int b_grade) : name(b_name)
 {
 	std::cout << INDIGO << "Bureaucrat constructor called" << RESET << std::endl;
 	if (b_grade < 1)
-	{
-		this->grade = 1;
 		throw (GradeTooHighException());
-	}
 	else if (b_grade > 150)
-	{
-		this->grade = 150;
 		throw (GradeTooLowException());
-	}
 	this->grade = b_grade;
 }
 
@@ -56,15 +50,9 @@ Bureaucrat::~Bureaucrat()
 void	Bureaucrat::setGrade(int s_grade)
 {
 	if (s_grade < 1)
-	{
-		this->grade = 1;
 		throw (GradeTooHighException());
-	}
 	else if (s_grade > 150)
-	{
-		this->grade = 150;
 		throw (GradeTooLowException());
-	}
 	this->grade = s_grade;
 }
 
@@ -81,9 +69,7 @@ int	Bureaucrat::getGrade() const
 void	Bureaucrat::incrementGrade()
 {
 	if (this->grade == 1)
-	{
 		throw (GradeTooHighException());
-	}
 	this->grade--;
 }
 
@@ -94,7 +80,7 @@ void	Bureaucrat::decrementGrade()
 	this->grade++;
 }
 
-void	Bureaucrat::signForm(Form &src)
+void	Bureaucrat::signForm(AForm &src)
 {
 	try
 	{
@@ -107,17 +93,30 @@ void	Bureaucrat::signForm(Form &src)
 	}
 }
 
+void	Bureaucrat::executeForm(AForm &src)
+{
+	try
+	{
+		src.execute(*this);
+		std::cout << CYAN << this->name << RESET << " executed " << CYAN << src.getName() << RESET << std::endl;
+	}
+	catch (std::exception const &e)
+	{
+		std::cout << CYAN << this->name << RESET << " couldn't execute " << CYAN << src.getName() << RESET << " because " << RED << e.what() << RESET << std::endl;
+	}
+}
+
 const char	*Bureaucrat::GradeTooHighException::what() const throw()
 {
-	return ("the grade you have set is too HIGH! rendering to 1.");
+	return ("The grade you have set is too HIGH!");
 }
 
 const char	*Bureaucrat::GradeTooLowException::what() const throw()
 {
-	return ("the grade you have set is too LOW! rendering to 150.");
+	return ("The grade you have set is too LOW!");
 }
 
-std::ostream	&operator<<(std::ostream &out, Bureaucrat &src)
+std::ostream	&operator<<(std::ostream &out, const Bureaucrat &src)
 {
 	out << GREEN << src.getName() << RESET << ", bureaucrat grade " << CYAN << src.getGrade() << RESET;
 	return (out);

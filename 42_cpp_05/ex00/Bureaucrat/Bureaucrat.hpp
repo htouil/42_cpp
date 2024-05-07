@@ -6,7 +6,7 @@
 /*   By: htouil <htouil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/18 21:22:14 by htouil            #+#    #+#             */
-/*   Updated: 2024/04/25 17:01:21 by htouil           ###   ########.fr       */
+/*   Updated: 2024/04/27 17:41:34 by htouil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,11 +61,11 @@ class Bureaucrat
 
 		class GradeTooHighException : public std::exception
 		{
-			virtual const char *what() const throw();
+			virtual const char	*what() const throw();
 		};
 		class GradeTooLowException : public std::exception
 		{
-			virtual const char *what() const throw();
+			virtual const char	*what() const throw();
 		};
 };
 

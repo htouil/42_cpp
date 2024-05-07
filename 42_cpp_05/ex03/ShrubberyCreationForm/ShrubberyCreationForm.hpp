@@ -1,32 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   RobotomyRequestForm.hpp                            :+:      :+:    :+:   */
+/*   ShrubberyCreationForm.hpp                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: htouil <htouil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/02 16:56:23 by htouil            #+#    #+#             */
-/*   Updated: 2024/05/05 14:45:32 by htouil           ###   ########.fr       */
+/*   Created: 2024/04/26 23:57:45 by htouil            #+#    #+#             */
+/*   Updated: 2024/05/04 15:46:05 by htouil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ROBOTOMYREQUESTFORM_HPP
-# define ROBOTOMYREQUESTFORM_HPP
+#ifndef SHRUBBERYCREATIONFORM_HPP
+# define SHRUBBERYCREATIONFORM_HPP
 
 # include <iostream>
-# include <cstdlib>
-# include <ctime>
+# include <fstream>
+# include <stdexcept>
+# include <string>
 # include "../AForm/AForm.hpp"
 
-class RobotomyRequestForm : public AForm
+class ShrubberyCreationForm : public AForm
 {
 	private:
 		std::string	_target;
 	public:
-							RobotomyRequestForm(const std::string target);
-							RobotomyRequestForm(const RobotomyRequestForm &src);
-		RobotomyRequestForm	&operator=(const RobotomyRequestForm &src);	
-							~RobotomyRequestForm();
+								ShrubberyCreationForm(const std::string target);
+								ShrubberyCreationForm(const ShrubberyCreationForm &src);
+		ShrubberyCreationForm	&operator=(const ShrubberyCreationForm &src);
+								~ShrubberyCreationForm();
 
 		void	beSigned(Bureaucrat &signer);
 		void	execute(const Bureaucrat &executor) const;

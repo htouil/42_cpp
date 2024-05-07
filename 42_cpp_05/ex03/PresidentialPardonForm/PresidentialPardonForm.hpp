@@ -1,35 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   RobotomyRequestForm.hpp                            :+:      :+:    :+:   */
+/*   PresidentialPardonForm.hpp                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: htouil <htouil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/02 16:56:23 by htouil            #+#    #+#             */
-/*   Updated: 2024/05/05 14:45:32 by htouil           ###   ########.fr       */
+/*   Created: 2024/05/05 14:53:15 by htouil            #+#    #+#             */
+/*   Updated: 2024/05/05 14:56:50 by htouil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ROBOTOMYREQUESTFORM_HPP
-# define ROBOTOMYREQUESTFORM_HPP
+#ifndef PRESIDENTIALPARDONFORM_HPP
+# define PRESIDENTIALPARDONFORM_HPP
 
 # include <iostream>
-# include <cstdlib>
-# include <ctime>
 # include "../AForm/AForm.hpp"
 
-class RobotomyRequestForm : public AForm
+class PresidentialPardonForm : public AForm
 {
 	private:
 		std::string	_target;
 	public:
-							RobotomyRequestForm(const std::string target);
-							RobotomyRequestForm(const RobotomyRequestForm &src);
-		RobotomyRequestForm	&operator=(const RobotomyRequestForm &src);	
-							~RobotomyRequestForm();
+	
+							PresidentialPardonForm(const std::string target);
+							PresidentialPardonForm(const PresidentialPardonForm &src);
+	PresidentialPardonForm	&operator=(const PresidentialPardonForm &src);
+							~PresidentialPardonForm();
 
-		void	beSigned(Bureaucrat &signer);
-		void	execute(const Bureaucrat &executor) const;
+	void	beSigned(Bureaucrat &signer);
+	void	execute(const Bureaucrat &executor) const;
 };
 
 #endif
