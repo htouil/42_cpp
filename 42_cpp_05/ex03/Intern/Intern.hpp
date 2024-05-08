@@ -6,7 +6,7 @@
 /*   By: htouil <htouil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 15:36:08 by htouil            #+#    #+#             */
-/*   Updated: 2024/05/07 17:17:32 by htouil           ###   ########.fr       */
+/*   Updated: 2024/05/08 17:40:46 by htouil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ class Intern
 		Intern	&operator=(const Intern &src);
 				~Intern();
 
-		AForm	&makeForm(const std::string name, const std::string target);
+		AForm	*makeForm(const std::string name, const std::string target);
 };
 
 #endif

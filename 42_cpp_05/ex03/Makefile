@@ -6,11 +6,11 @@
 #    By: htouil <htouil@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/16 17:24:27 by htouil            #+#    #+#              #
-#    Updated: 2024/05/07 17:41:29 by htouil           ###   ########.fr        #
+#    Updated: 2024/05/08 17:42:19 by htouil           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	= Exec
+NAME	= Create
 
 SRCS	= main.cpp Bureaucrat/Bureaucrat.cpp AForm/AForm.cpp \
 		ShrubberyCreationForm/ShrubberyCreationForm.cpp RobotomyRequestForm/RobotomyRequestForm.cpp \
