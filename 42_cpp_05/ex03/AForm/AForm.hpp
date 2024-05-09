@@ -6,7 +6,7 @@
 /*   By: htouil <htouil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 15:30:43 by htouil            #+#    #+#             */
-/*   Updated: 2024/05/02 17:28:45 by htouil           ###   ########.fr       */
+/*   Updated: 2024/05/09 16:49:32 by htouil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,11 @@ class AForm
 		const int			exec_grade;
 
 	public:
-				AForm();
-				AForm(std::string f_name, int s_grade, int e_grade);
-				AForm(const AForm &src);
-		AForm	&operator=(const AForm &src);
-				~AForm();
+					AForm();
+					AForm(std::string f_name, int s_grade, int e_grade);
+					AForm(const AForm &src);
+		AForm		&operator=(const AForm &src);
+		virtual		~AForm();
 
 		std::string		getName();
 		bool			getSign();

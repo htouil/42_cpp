@@ -6,7 +6,7 @@
 /*   By: htouil <htouil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 17:25:09 by htouil            #+#    #+#             */
-/*   Updated: 2024/05/08 17:51:56 by htouil           ###   ########.fr       */
+/*   Updated: 2024/05/09 18:16:08 by htouil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,12 @@ int	main()
 			AForm		*f;
 			Bureaucrat	b("hatim", 1);
 
-			f = i.makeForm("Robotomy Request", "Bender");
+			f = i.makeForm("Presidential Pardon", "Bender");
+			if (!f)
+				return (0);
 			b.signForm(*f);
 			b.executeForm(*f);
+			delete f;
 		}
 		catch (std::exception const &e)
 		{
@@ -41,4 +44,5 @@ int	main()
 		std::cout << "--------------------------------------------------------------------------" << std::endl;
 		std::cout << std::endl;
 	}
+	return (0);
 }
