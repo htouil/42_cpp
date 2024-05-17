@@ -6,7 +6,7 @@
 /*   By: htouil <htouil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 19:06:18 by htouil            #+#    #+#             */
-/*   Updated: 2024/05/16 20:35:41 by htouil           ###   ########.fr       */
+/*   Updated: 2024/05/17 17:54:25 by htouil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,11 @@
 
 # include <iostream>
 # include <cctype>
+# include <cstdlib>
+# include <sstream>
 # include <string>
 # include <limits>
+# include <iomanip>
 
 # define RESET       "\033[0m"
 # define RED         "\033[31m"
