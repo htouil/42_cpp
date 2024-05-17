@@ -6,7 +6,7 @@
 /*   By: htouil <htouil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 19:06:27 by htouil            #+#    #+#             */
-/*   Updated: 2024/05/16 20:37:59 by htouil           ###   ########.fr       */
+/*   Updated: 2024/05/17 02:26:37 by htouil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@
 int	is_int(std::string str)
 {
 	int	i;
-	int	x;
+	// int	x;
 
 	i = 0;
 	if (str[i] == '+' || str[i] == '-')
@@ -89,6 +89,10 @@ int	is_float(std::string str)
 
 void	ScalarConverter::convert(std::string to_be_converted)
 {
+	long	x;
+	float	a;
+	double	b;
+
 	std::cout << "Converting: " << CYAN << "\"" << to_be_converted << "\"" << RESET << std::endl << std::endl;
 	if (to_be_converted.length() > 0)
 	{
@@ -97,15 +101,42 @@ void	ScalarConverter::convert(std::string to_be_converted)
 		{
 			std::cout << GREEN << "char: " << RESET << "impossible" << std::endl;
 			std::cout << GREEN << "int: " << RESET << "impossible" << std::endl;
-			if (to_be_converted == "-inff" || to_be_converted == "+inff" || to_be_converted == "nanf")
+			if (to_be_converted == "-inf" || to_be_converted == "+inf" || to_be_converted == "nan")
+			{
+				std::cout << GREEN << "float: " << RESET << to_be_converted + "f" << std::endl;
+				std::cout << GREEN << "double: " << RESET << to_be_converted << std::endl;
+			}
+			else if (to_be_converted == "-inff" || to_be_converted == "+inff")
 			{
 				std::cout << GREEN << "float: " << RESET << to_be_converted << std::endl;
 				std::cout << GREEN << "double: " << RESET << to_be_converted.substr(0, 4) << std::endl;
 			}
+			else
+			{
+				std::cout << GREEN << "float: " << RESET << to_be_converted << std::endl;
+				std::cout << GREEN << "double: " << RESET << to_be_converted.substr(0, 3) << std::endl;
+			}
 		}
 		else if (is_int(to_be_converted) == 1)
 		{
-			
+			x = std::atol(to_be_converted.c_str());
+			if (x > 2147483647 || x < -2147483648)
+			{
+				std::cout << GREEN << "char: " << RESET << "impossible" << std::endl;
+				std::cout << GREEN << "int: " << RESET << "impossible" << std::endl;
+			}
+			else
+			{
+				if (x > 126 || x < 0)
+					std::cout << GREEN << "char: " << RESET << "impossible" << std::endl;
+				else
+					std::cout << GREEN << "char: " << RESET << "\'" <<static_cast<char>(x) << "\'" << std::endl;
+				std::cout << GREEN << "int: " << RESET << x << std::endl;
+			}
+			std::stringstream(to_be_converted) >> a;
+			std::cout << GREEN << "float: " << RESET << a << ".0f" << std::endl;
+			std::stringstream(to_be_converted) >> b;
+			std::cout << GREEN << "double: " << RESET << b << ".0" << std::endl;
 		}
 		return ;
 	}
