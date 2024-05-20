@@ -1,25 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScalarConverter.hpp                                :+:      :+:    :+:   */
+/*   Serializer.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: htouil <htouil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/13 19:06:18 by htouil            #+#    #+#             */
-/*   Updated: 2024/05/17 17:54:25 by htouil           ###   ########.fr       */
+/*   Created: 2024/05/17 18:54:51 by htouil            #+#    #+#             */
+/*   Updated: 2024/05/20 20:44:22 by htouil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ScalarConverter_HPP
-# define ScalarConverter_HPP
+#ifndef SERIALIZER_HPP
+# define SERIALIZER_HPP
 
 # include <iostream>
-# include <cctype>
-# include <cstdlib>
-# include <sstream>
-# include <string>
-# include <limits>
-# include <iomanip>
+# include "../Data/Data.hpp"
 
 # define RESET       "\033[0m"
 # define RED         "\033[31m"
@@ -46,13 +41,14 @@
 # define TURQUOISE   "\033[38;5;45m"
 # define INDIGO      "\033[38;5;54m"
 
-class ScalarConverter
+class Serializer
 {
 	private:
-		ScalarConverter();
-		ScalarConverter(const ScalarConverter &src);
+		Serializer();
+		Serializer(const Serializer &src);
 	public:
-		static void	convert(std::string to_be_converted);	
+		static uintptr_t	serialize(Data *ptr);	
+		static Data			*deserialize(uintptr_t raw);
 };
 
 #endif
