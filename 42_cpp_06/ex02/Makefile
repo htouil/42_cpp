@@ -6,13 +6,13 @@
 #    By: htouil <htouil@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/21 17:05:27 by htouil            #+#    #+#              #
-#    Updated: 2024/05/21 17:06:19 by htouil           ###   ########.fr        #
+#    Updated: 2024/05/21 17:40:39 by htouil           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= Identify
 
-SRCS	= main.cpp 
+SRCS	= main.cpp Base/Base.cpp
 
 OBJS	= $(SRCS:.cpp=.o)
 

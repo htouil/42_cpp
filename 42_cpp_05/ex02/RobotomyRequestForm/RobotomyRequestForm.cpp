@@ -6,7 +6,7 @@
 /*   By: htouil <htouil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 16:56:20 by htouil            #+#    #+#             */
-/*   Updated: 2024/05/06 14:13:49 by htouil           ###   ########.fr       */
+/*   Updated: 2024/05/21 17:32:31 by htouil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,7 @@ void	RobotomyRequestForm::execute(const Bureaucrat &executor) const
 	}
 	std::cout << CORAL << "WHIIRRRRRRRRR!" << RESET << std::endl;
 	
-	i = half_chance(); // get a better randomizing function
-	// std::cout << i << std::endl;
+	i = half_chance();
 	if (i == 0)
 		std::cout << "The robotomy has " << RED <<  "failed" << RESET << std::endl;
 	else if (i == 1)

@@ -6,7 +6,7 @@
 /*   By: htouil <htouil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 17:05:45 by htouil            #+#    #+#             */
-/*   Updated: 2024/05/21 17:07:38 by htouil           ###   ########.fr       */
+/*   Updated: 2024/05/21 18:27:11 by htouil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define BASE_HPP
 
 # include <iostream>
+# include <cstdlib>
+# include <ctime>
 
 # define RESET       "\033[0m"
 # define RED         "\033[31m"
@@ -42,7 +44,38 @@
 
 class Base
 {
-	
+	public:
+		virtual	~Base();
+
+		virtual std::string	getType() = 0;
 };
+
+class A : public Base
+{
+	public:
+		A();
+
+		std::string	getType();
+};
+
+class B : public Base
+{
+	public:
+		B();
+
+		std::string	getType();
+};
+
+class C : public Base
+{
+	public:
+		C();
+
+		std::string	getType();
+};
+
+Base	*generate();
+void	identify(Base *p);
+void	identify(Base &p);
 
 #endif
