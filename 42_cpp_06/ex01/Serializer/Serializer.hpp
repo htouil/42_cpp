@@ -6,7 +6,7 @@
 /*   By: htouil <htouil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 18:54:51 by htouil            #+#    #+#             */
-/*   Updated: 2024/05/20 20:44:22 by htouil           ###   ########.fr       */
+/*   Updated: 2024/05/22 16:40:53 by htouil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ class Serializer
 {
 	private:
 		Serializer();
-		Serializer(const Serializer &src);
 	public:
 		static uintptr_t	serialize(Data *ptr);	
 		static Data			*deserialize(uintptr_t raw);

@@ -6,7 +6,7 @@
 /*   By: htouil <htouil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/20 17:51:59 by htouil            #+#    #+#             */
-/*   Updated: 2024/05/20 17:52:32 by htouil           ###   ########.fr       */
+/*   Updated: 2024/05/22 16:41:37 by htouil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 typedef struct Data
 {
-	char	name;
+	char	letter;
 }		Data;
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: htouil <htouil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/13 19:06:18 by htouil            #+#    #+#             */
-/*   Updated: 2024/05/17 17:54:25 by htouil           ###   ########.fr       */
+/*   Updated: 2024/05/22 16:31:52 by htouil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ class ScalarConverter
 {
 	private:
 		ScalarConverter();
-		ScalarConverter(const ScalarConverter &src);
 	public:
 		static void	convert(std::string to_be_converted);	
 };

@@ -6,7 +6,7 @@
 /*   By: htouil <htouil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/21 17:14:58 by htouil            #+#    #+#             */
-/*   Updated: 2024/05/21 18:35:52 by htouil           ###   ########.fr       */
+/*   Updated: 2024/05/22 17:44:20 by htouil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,44 +14,13 @@
 
 Base::~Base()
 {
-	std::cout << BROWN << "Base destructor called" << RESET << std::endl;
-}
-
-A::A()
-{
-	std::cout << AQUA << "A default constructor called" << RESET << std::endl;
-}
-
-B::B()
-{
-	std::cout << BLUE << "B default constructor called" << RESET << std::endl;
-}
-
-C::C()
-{
-	std::cout << CORAL << "C default constructor called" << RESET << std::endl;
-}
-
-std::string	A::getType()
-{
-	return ("A");
-}
-
-std::string	B::getType()
-{
-	return ("B");
-}
-
-std::string	C::getType()
-{
-	return ("C");
 }
 
 int	one_third_chance()
 {
 	int	i;
 
-	srand(static_cast<unsigned int>(std::time(nullptr)));
+	std::srand(time(NULL));
 	i = rand() % 3;
 	return (i);
 }
@@ -72,10 +41,47 @@ Base	*generate()
 
 void	identify(Base *p)
 {
-	std::cout << "The type of the object pointed to by " << GREEN << "'*p'" << RESET << " is: " << YELLOW << p->getType() << RESET << std::endl;
+	std::cout << "The type of the object pointed to by " << GREEN << "'*p'" << RESET << " is: ";
+	if (dynamic_cast<A*>(p))
+		std::cout << YELLOW << "A" << RESET << std::endl;
+	else if (dynamic_cast<B*>(p))
+		std::cout << YELLOW << "B" << RESET << std::endl;
+	else if (dynamic_cast<C*>(p))
+		std::cout << YELLOW << "C" << RESET << std::endl;
 }
 
 void	identify(Base &p)
 {
-	std::cout << "The type of the object pointed to by " << GREEN << "'&p'" << RESET << " is: " << YELLOW << p.getType() << RESET << std::endl;
+	std::cout << "The type of the object pointed to by " << GREEN << "'&p'" << RESET << " is: ";
+	try
+	{
+		A	&a = dynamic_cast<A&>(p);
+
+		(void)a;
+		std::cout << YELLOW << "A" << RESET << std::endl;
+	}
+	catch (const std::bad_cast &e)
+	{
+		try
+		{
+			B	&b = dynamic_cast<B&>(p);
+
+			(void)b;
+			std::cout << YELLOW << "B" << RESET << std::endl;
+		}
+		catch (const std::bad_cast &e)
+		{
+			try
+			{
+				C	&c = dynamic_cast<C&>(p);
+
+				(void)c;
+				std::cout << YELLOW << "C" << RESET << std::endl;
+			}
+			catch (const std::bad_cast &e)
+			{
+				std::cerr << RED << "Bad cast exception: " << RESET << e.what() << std::endl;
+			}
+		}
+	}
 }
