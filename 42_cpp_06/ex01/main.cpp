@@ -19,7 +19,7 @@ int	main()
 		Data	ptr;
 		Data	*tmp;
 
-		ptr.name = (char)'a';
+		ptr.letter = (char)'a';
 		std::cout << CYAN << "address of the ptr before serializing: " << RESET << &ptr << std::endl;
 		tmp = Serializer::deserialize(Serializer::serialize(&ptr));
 		std::cout << CYAN << "address of the ptr after serializing:  " << RESET << tmp << std::endl;
@@ -37,7 +37,7 @@ int	main()
 		Data		*tmp;
 		uintptr_t	x;
 
-		ptr.name = (char)'b';
+		ptr.letter = (char)'b';
 		std::cout << CYAN << "address of the ptr before serializing: " << RESET << &ptr << std::endl;
 		x = Serializer::serialize(&ptr);
 		std::cout << RED << "integer value of the address: " << RESET << x << std::endl;
