@@ -6,7 +6,7 @@
 /*   By: htouil <htouil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/01 16:45:14 by htouil            #+#    #+#             */
-/*   Updated: 2024/06/01 20:13:51 by htouil           ###   ########.fr       */
+/*   Updated: 2024/06/02 15:36:42 by htouil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,10 @@ class Array
 		T				*getArr();
 
 		class OutOfBoundsException : public std::exception
+		{
+			virtual const char	*what() const throw();
+		};
+		class EmptyArrayException : public std::exception
 		{
 			virtual const char	*what() const throw();
 		};

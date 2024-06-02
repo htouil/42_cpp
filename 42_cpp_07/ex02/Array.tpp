@@ -6,7 +6,7 @@
 /*   By: htouil <htouil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/01 17:19:45 by htouil            #+#    #+#             */
-/*   Updated: 2024/06/01 20:32:03 by htouil           ###   ########.fr       */
+/*   Updated: 2024/06/02 15:49:14 by htouil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ template<typename T>
 Array<T>::Array()
 {
 	std::cout << MAROON << "Array default constructor called" << RESET << std::endl;
-	this->arr = NULL;
+	// this->arr = NULL;
+	this->arr = new T[0];
 }
 
 template<typename T>
@@ -38,7 +39,7 @@ Array<T>::Array(unsigned int n)
 	unsigned int	i;
 
 	std::cout << MAROON << "Array constructor called" << RESET << std::endl;
-	this->arr = NULL;
+	// this->arr = NULL;
 	if (n > 0)
 	{
 		this->arr = new T[n];
@@ -51,8 +52,9 @@ template<typename T>
 Array<T>::Array(const Array &src)
 {
 	std::cout << MAROON << "Array copy constructor called" << RESET << std::endl;
+		// this->arr = NULL;
 	if (src.arr == NULL)
-		this->arr = NULL;
+		this->arr = new T[0];
 	else
 	{
 		unsigned int	i;
@@ -71,10 +73,11 @@ Array<T>	&Array<T>::operator=(const Array &src)
 	std::cout << MAROON << "Array copy assignment operator called" << RESET << std::endl;
 	if (this != &src)
 	{
-		if (this->arr != NULL)
-			delete[] this->arr;
+			// this->arr = NULL;
+		// if (this->arr != NULL)
+		delete[] this->arr;
 		if (src.arr == NULL)
-			this->arr = NULL;
+			this->arr = new T[0];
 		else
 		{
 			unsigned int	i;
@@ -93,8 +96,8 @@ template<typename T>
 Array<T>::~Array()
 {
 	std::cout << MAROON << "Array destructor called" << RESET << std::endl;
-	if (this->arr != NULL)
-		delete[] this->arr;
+	// if (this->arr != NULL)
+	delete[] this->arr;
 }
 
 template<typename T>
@@ -110,9 +113,20 @@ const char	*Array<T>::OutOfBoundsException::what() const throw()
 }
 
 template<typename T>
+const char	*Array<T>::EmptyArrayException::what() const throw()
+{
+	return ("This array is empty!");
+}
+
+template<typename T>
 T	&Array<T>::operator[](int i)
 {
-	if (i < 0 || i > this->getArr())
+	if (this->arr == NULL)
+	{
+		std::cout << "SALAM" << std::endl;
+		throw (EmptyArrayException());
+	}
+	if (i < 0 || i > this->getSize() - 1)
 		throw (OutOfBoundsException());
 	return (this->arr[i]);
 }
