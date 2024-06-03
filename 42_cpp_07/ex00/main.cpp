@@ -6,7 +6,7 @@
 /*   By: htouil <htouil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/26 14:57:15 by htouil            #+#    #+#             */
-/*   Updated: 2024/05/27 18:18:55 by htouil           ###   ########.fr       */
+/*   Updated: 2024/06/03 20:07:25 by htouil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,23 @@ int	main()
 		std::cout << "c = " << BLUE << c << RESET << ", d = " << BLUE << d << RESET << std::endl << std::endl;
 		std::cout << "min( c, d ) = " << BLUE << ::min( c, d ) << RESET << std::endl;
 		std::cout << "max( c, d ) = " << BLUE << ::max( c, d ) << RESET << std::endl;
+	}
+
+	{
+		std::cout << std::endl;
+		std::cout << "--------------------------------------------------------------------------" << std::endl;
+		std::cout << std::endl;
+	}
+
+	{
+		std::cout << YELLOW << "------TEST 3------" << RESET << std::endl;
+		double	e = 1.5;
+		double	f = 3.5;
+
+		::swap(e, f);
+		std::cout << "e = " << BLUE << e << RESET << ", f = " << BLUE << f << RESET << std::endl << std::endl;
+		std::cout << "min( e, f ) = " << BLUE << ::min( e, f ) << RESET << std::endl;
+		std::cout << "max( e, f ) = " << BLUE << ::max( e, f ) << RESET << std::endl;
 	}
 	return (0);
 }

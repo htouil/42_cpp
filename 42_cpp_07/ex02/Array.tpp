@@ -6,7 +6,7 @@
 /*   By: htouil <htouil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/01 17:19:45 by htouil            #+#    #+#             */
-/*   Updated: 2024/06/01 20:32:03 by htouil           ###   ########.fr       */
+/*   Updated: 2024/06/03 19:46:04 by htouil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,15 @@
 template<typename T>
 unsigned int	Array<T>::size()
 {
-	unsigned int	i;
-
-	i = 0;
-	if (this->arr == NULL)
-		return (i);
-	while (this->arr[i])
-		i++;
-	return (i);
+	return (this->len);
 }
 
 template<typename T>
 Array<T>::Array()
 {
-	std::cout << MAROON << "Array default constructor called" << RESET << std::endl;
+	std::cout << GREEN << "Array default constructor called" << RESET << std::endl;
 	this->arr = NULL;
+	this->len = 0;
 }
 
 template<typename T>
@@ -37,53 +31,58 @@ Array<T>::Array(unsigned int n)
 {
 	unsigned int	i;
 
-	std::cout << MAROON << "Array constructor called" << RESET << std::endl;
-	this->arr = NULL;
-	if (n > 0)
+	std::cout << GREEN << "Array constructor called" << RESET << std::endl;
+	if (n < 0)
+		throw (NegativeSizeInputException());
+	else if (n == 0)
+	{
+		this->arr = NULL;
+		this->len = 0;
+	}
+	else
 	{
 		this->arr = new T[n];
 		for (i = 0; i < n; i++)
 			this->arr[i] = 72;
+		this->len = n;
 	}
 }
 
 template<typename T>
 Array<T>::Array(const Array &src)
 {
-	std::cout << MAROON << "Array copy constructor called" << RESET << std::endl;
+	std::cout << GREEN << "Array copy constructor called" << RESET << std::endl;
 	if (src.arr == NULL)
 		this->arr = NULL;
 	else
 	{
 		unsigned int	i;
-		unsigned int	n;
 
-		n = src.size();
-		this->arr = new T[n];
-		for (i = 0; i < n; i++)
+		this->arr = new T[src.len];
+		for (i = 0; i < src.len; i++)
 			this->arr[i] = src.arr[i];
+		this->len = src.len;
 	}
 }
 
 template<typename T>
 Array<T>	&Array<T>::operator=(const Array &src)
 {
-	std::cout << MAROON << "Array copy assignment operator called" << RESET << std::endl;
+	std::cout << GREEN << "Array copy assignment operator called" << RESET << std::endl;
 	if (this != &src)
 	{
-		if (this->arr != NULL)
+		if (this->arr)
 			delete[] this->arr;
 		if (src.arr == NULL)
 			this->arr = NULL;
 		else
 		{
 			unsigned int	i;
-			unsigned int	n;
 
-			n = src.size();
-			this->arr = new T[n];
-			for (i = 0; i < n; i++)
+			this->arr = new T[src.len];
+			for (i = 0; i < src.len; i++)
 				this->arr[i] = src.arr[i];
+			this->len = src.len;
 		}
 	}
 	return (*this);
@@ -92,7 +91,7 @@ Array<T>	&Array<T>::operator=(const Array &src)
 template<typename T>
 Array<T>::~Array()
 {
-	std::cout << MAROON << "Array destructor called" << RESET << std::endl;
+	std::cout << GREEN << "Array destructor called" << RESET << std::endl;
 	if (this->arr != NULL)
 		delete[] this->arr;
 }
@@ -106,13 +105,27 @@ T	*Array<T>::getArr()
 template<typename T>
 const char	*Array<T>::OutOfBoundsException::what() const throw()
 {
-	return ("This index is out of the array bounds!");
+	return ("The index is out of the array bounds!");
 }
 
 template<typename T>
-T	&Array<T>::operator[](int i)
+const char	*Array<T>::EmptyArrayException::what() const throw()
 {
-	if (i < 0 || i > this->getArr())
+	return ("The array is empty!");
+}
+
+template<typename T>
+const char	*Array<T>::NegativeSizeInputException::what() const throw()
+{
+	return ("The size input of the array is negative!");
+}
+
+template<typename T>
+T	&Array<T>::operator[](unsigned int i)
+{
+	if (this->arr == NULL)
+		throw (EmptyArrayException());
+	if (i >= this->len)
 		throw (OutOfBoundsException());
 	return (this->arr[i]);
 }

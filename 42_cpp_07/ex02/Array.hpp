@@ -6,7 +6,7 @@
 /*   By: htouil <htouil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/01 16:45:14 by htouil            #+#    #+#             */
-/*   Updated: 2024/06/01 20:13:51 by htouil           ###   ########.fr       */
+/*   Updated: 2024/06/03 19:47:29 by htouil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,8 @@ template<typename T>
 class Array
 {
 	private:
-		T	*arr;
+		T				*arr;
+		unsigned int	len;
 	public:
 					Array();
 					Array(unsigned int n);
@@ -55,13 +56,21 @@ class Array
 
 		unsigned int	size();
 		T				*getArr();
+		T				&operator[](unsigned int i);
 
 		class OutOfBoundsException : public std::exception
 		{
 			virtual const char	*what() const throw();
 		};
+		class EmptyArrayException : public std::exception
+		{
+			virtual const char	*what() const throw();
+		};
+		class NegativeSizeInputException : public std::exception
+		{
+			virtual const char	*what() const throw();
+		};
 
-		T	&operator[](int i);
 };
 
 #endif
