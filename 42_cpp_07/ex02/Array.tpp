@@ -6,7 +6,7 @@
 /*   By: htouil <htouil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/01 17:19:45 by htouil            #+#    #+#             */
-/*   Updated: 2024/06/03 20:26:36 by htouil           ###   ########.fr       */
+/*   Updated: 2024/06/04 20:02:15 by htouil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,20 +32,19 @@ Array<T>::Array(unsigned int n)
 	unsigned int	i;
 
 	std::cout << GREEN << "Array constructor called" << RESET << std::endl;
-	if (n < 0)
-		throw (NegativeSizeInputException());
-	else if (n == 0)
+	if (n == 0)
 	{
 		this->arr = NULL;
 		this->len = 0;
 	}
-	else
+	else if (n > 0)
 	{
 		this->arr = new T[n];
 		for (i = 0; i < n; i++)
 			this->arr[i] = 72;
 		this->len = n;
 	}
+	return ;
 }
 
 template<typename T>
@@ -112,12 +111,6 @@ template<typename T>
 const char	*Array<T>::EmptyArrayException::what() const throw()
 {
 	return ("The array is empty!");
-}
-
-template<typename T>
-const char	*Array<T>::NegativeSizeInputException::what() const throw()
-{
-	return ("The size input of the array is negative!");
 }
 
 template<typename T>

@@ -6,7 +6,7 @@
 /*   By: htouil <htouil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/01 16:45:14 by htouil            #+#    #+#             */
-/*   Updated: 2024/06/03 20:24:59 by htouil           ###   ########.fr       */
+/*   Updated: 2024/06/04 20:07:19 by htouil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,11 +66,6 @@ class Array
 		{
 			virtual const char	*what() const throw();
 		};
-		class NegativeSizeInputException : public std::exception
-		{
-			virtual const char	*what() const throw();
-		};
-
 };
 
 #endif

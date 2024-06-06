@@ -6,7 +6,7 @@
 /*   By: htouil <htouil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 16:44:40 by htouil            #+#    #+#             */
-/*   Updated: 2024/05/27 18:27:36 by htouil           ###   ########.fr       */
+/*   Updated: 2024/06/06 13:39:38 by htouil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	iter(X &val, int length, func apply)
 	int	i;
 
 	for (i = 0; i < length; i++)
-		val[i] = apply(val[i]);
+		apply(val[i]);
 }
 
 #endif

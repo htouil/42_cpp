@@ -6,24 +6,23 @@
 /*   By: htouil <htouil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 16:44:29 by htouil            #+#    #+#             */
-/*   Updated: 2024/06/03 20:24:14 by htouil           ###   ########.fr       */
+/*   Updated: 2024/06/06 13:43:03 by htouil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "iter.hpp"
 
-char	UperLowerCase(char l)
+void	square(int &x)
 {
-	if (std::isupper(l))
-		return (l + 32);
-	if (std::islower(l))
-		return (l - 32);
-	return (l);
+	x = x * x;
 }
 
-int	square(int x)
+void	UperLowerCase(char &l)
 {
-	return (x * x);
+	if (std::isupper(l))
+		l = l + 32;
+	else if (std::islower(l))
+		l = l - 32;
 }
 
 int	main()
