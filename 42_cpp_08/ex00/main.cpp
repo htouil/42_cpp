@@ -6,12 +6,12 @@
 /*   By: htouil <htouil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 19:48:56 by htouil            #+#    #+#             */
-/*   Updated: 2024/06/12 03:36:33 by htouil           ###   ########.fr       */
+/*   Updated: 2024/06/12 19:39:04 by htouil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "easyfind.hpp"
-#include "easyfind.tpp"
+#include "easyfind/easyfind.hpp"
+#include "easyfind/easyfind.tpp"
 #include <vector>
 #include <list>
 
