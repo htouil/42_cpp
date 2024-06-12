@@ -6,7 +6,7 @@
 /*   By: htouil <htouil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 19:49:28 by htouil            #+#    #+#             */
-/*   Updated: 2024/06/10 20:55:17 by htouil           ###   ########.fr       */
+/*   Updated: 2024/06/12 03:33:10 by htouil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define EASYFIND_HPP
 
 # include <iostream>
-# include <vector>
+# include <iterator>
 
 # define RESET       "\033[0m"
 # define RED         "\033[31m"
@@ -41,10 +41,7 @@
 # define TURQUOISE   "\033[38;5;45m"
 # define INDIGO      "\033[38;5;54m"
 
-typedef std::vector<int>::iterator iterator;
-
 template <typename T>
-iterator    easyfind(T vec, int to_find);
-
+void	easyfind(T &vec, int to_find);
 
 #endif
