@@ -6,11 +6,11 @@
 #    By: htouil <htouil@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/12 19:36:56 by htouil            #+#    #+#              #
-#    Updated: 2024/06/12 19:39:41 by htouil           ###   ########.fr        #
+#    Updated: 2024/06/13 00:50:49 by htouil           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	= 
+NAME	= Life
 
 SRCS	= main.cpp Span/Span.cpp
 

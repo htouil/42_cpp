@@ -6,7 +6,7 @@
 /*   By: htouil <htouil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 19:37:52 by htouil            #+#    #+#             */
-/*   Updated: 2024/06/12 19:50:12 by htouil           ###   ########.fr       */
+/*   Updated: 2024/06/13 01:43:52 by htouil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,12 @@
 # define SPAN_HPP
 
 # include <iostream>
+# include <vector>
 # include <iterator>
+# include <algorithm>
+# include <exception>
+# include <cstdlib>
+# include <ctime>
 
 # define RESET       "\033[0m"
 # define RED         "\033[31m"
@@ -41,12 +46,11 @@
 # define TURQUOISE   "\033[38;5;45m"
 # define INDIGO      "\033[38;5;54m"
 
-template<typename T>
 class Span
 {
 	private:
-		T				ctnr;
-		unsigned int	size;
+		std::vector<int>	cntr;
+		unsigned int		size;
 
 	public:
 				Span(unsigned int N);
@@ -54,7 +58,11 @@ class Span
 		Span	&operator=(const Span &src);
 				~Span();
 
-		void	addNumber();
+		std::vector<int>	&getCntr();
+		void				addNumber(int x);
+		void				addMultiNumbers(unsigned int y);
+		int					shortestSpan();
+		int					longestSpan();
 };
 
 #endif
