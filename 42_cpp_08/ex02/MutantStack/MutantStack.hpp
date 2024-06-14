@@ -6,7 +6,7 @@
 /*   By: htouil <htouil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 01:26:29 by htouil            #+#    #+#             */
-/*   Updated: 2024/06/14 01:36:42 by htouil           ###   ########.fr       */
+/*   Updated: 2024/06/14 02:33:42 by htouil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <iostream>
 # include <iterator>
+# include <stack>
 
 # define RESET       "\033[0m"
 # define RED         "\033[31m"
@@ -41,7 +42,8 @@
 # define TURQUOISE   "\033[38;5;45m"
 # define INDIGO      "\033[38;5;54m"
 
-class MutantStack
+template<typename T>
+class MutantStack : public std::stack<T>
 {
 	private:
 
@@ -50,6 +52,19 @@ class MutantStack
 					MutantStack(const MutantStack &src);
 		MutantStack	&operator=(const MutantStack &src);
 					~MutantStack();
+
+		typedef typename std::stack<T>::container_type::iterator	iterator;
+		iterator	begin();
+		iterator	end();
+		typedef typename std::stack<T>::container_type::const_iterator	const_iterator;
+		const_iterator	begin();
+		const_iterator	end();
+		typedef typename std::stack<T>::container_type::reverse_iterator	reverse_iterator;
+		reverse_iterator	rbegin();
+		reverse_iterator	rend();
+		typedef typename std::stack<T>::container_type::const_reverse_iterator	const_reverse_iterator;
+		const_reverse_iterator	rbegin();
+		const_reverse_iterator	rend();
 };
 
 #endif
