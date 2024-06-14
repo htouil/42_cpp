@@ -6,7 +6,7 @@
 /*   By: htouil <htouil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 01:26:41 by htouil            #+#    #+#             */
-/*   Updated: 2024/06/14 17:11:51 by htouil           ###   ########.fr       */
+/*   Updated: 2024/06/14 19:26:29 by htouil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ MutantStack<T>::MutantStack()
 }
 
 template<typename T>
-MutantStack<T>::MutantStack(const MutantStack<T> &src)
+MutantStack<T>::MutantStack(const MutantStack<T> &src) : std::stack<T>(src)
 {
 	std::cout << MAGENTA << "MutantStack copy constructor called" << RESET << std::endl;
 	*this = src;
@@ -55,13 +55,13 @@ typename MutantStack<T>::iterator	MutantStack<T>::end()
 template<typename T>
 typename MutantStack<T>::const_iterator	MutantStack<T>::cbegin()
 {
-	return (this->c.cbegin());
+	return (this->c.begin());
 }
 
 template<typename T>
 typename MutantStack<T>::const_iterator	MutantStack<T>::cend()
 {
-	return (this->c.cend());
+	return (this->c.end());
 }
 
 template<typename T>
@@ -79,11 +79,11 @@ typename MutantStack<T>::reverse_iterator	MutantStack<T>::rend()
 template<typename T>
 typename MutantStack<T>::const_reverse_iterator	MutantStack<T>::crbegin()
 {
-	return (this->c.crbegin());
+	return (this->c.rbegin());
 }
 
 template<typename T>
 typename MutantStack<T>::const_reverse_iterator	MutantStack<T>::crend()
 {
-	return (this->c.crend());
+	return (this->c.rend());
 }
