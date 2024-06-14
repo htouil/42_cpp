@@ -6,7 +6,7 @@
 /*   By: htouil <htouil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 01:26:41 by htouil            #+#    #+#             */
-/*   Updated: 2024/06/14 02:33:56 by htouil           ###   ########.fr       */
+/*   Updated: 2024/06/14 17:11:51 by htouil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ template<typename T>
 MutantStack<T>	&MutantStack<T>::operator=(const MutantStack<T> &src)
 {
 	std::cout << MAGENTA << "MutantStack copy assignment operator called" << RESET << std::endl;
+	if (this != &src)
+		this->c = src.c;
 	return (*this);
 }
 
@@ -51,13 +53,37 @@ typename MutantStack<T>::iterator	MutantStack<T>::end()
 }
 
 template<typename T>
-typename MutantStack<T>::const_iterator	MutantStack<T>::begin()
+typename MutantStack<T>::const_iterator	MutantStack<T>::cbegin()
 {
-	return (this->c.begin())
+	return (this->c.cbegin());
 }
 
 template<typename T>
-typename MutantStack<T>::cons_iterator	MutantStack<T>::end()
+typename MutantStack<T>::const_iterator	MutantStack<T>::cend()
 {
-	
+	return (this->c.cend());
+}
+
+template<typename T>
+typename MutantStack<T>::reverse_iterator	MutantStack<T>::rbegin()
+{
+	return (this->c.rbegin());
+}
+
+template<typename T>
+typename MutantStack<T>::reverse_iterator	MutantStack<T>::rend()
+{
+	return (this->c.rend());
+}
+
+template<typename T>
+typename MutantStack<T>::const_reverse_iterator	MutantStack<T>::crbegin()
+{
+	return (this->c.crbegin());
+}
+
+template<typename T>
+typename MutantStack<T>::const_reverse_iterator	MutantStack<T>::crend()
+{
+	return (this->c.crend());
 }

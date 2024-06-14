@@ -6,7 +6,7 @@
 /*   By: htouil <htouil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 01:26:29 by htouil            #+#    #+#             */
-/*   Updated: 2024/06/14 02:33:42 by htouil           ###   ########.fr       */
+/*   Updated: 2024/06/14 17:12:05 by htouil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,6 @@
 template<typename T>
 class MutantStack : public std::stack<T>
 {
-	private:
-
 	public:
 					MutantStack();
 					MutantStack(const MutantStack &src);
@@ -57,14 +55,14 @@ class MutantStack : public std::stack<T>
 		iterator	begin();
 		iterator	end();
 		typedef typename std::stack<T>::container_type::const_iterator	const_iterator;
-		const_iterator	begin();
-		const_iterator	end();
+		const_iterator	cbegin();
+		const_iterator	cend();
 		typedef typename std::stack<T>::container_type::reverse_iterator	reverse_iterator;
 		reverse_iterator	rbegin();
 		reverse_iterator	rend();
 		typedef typename std::stack<T>::container_type::const_reverse_iterator	const_reverse_iterator;
-		const_reverse_iterator	rbegin();
-		const_reverse_iterator	rend();
+		const_reverse_iterator	crbegin();
+		const_reverse_iterator	crend();
 };
 
 #endif
