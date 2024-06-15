@@ -6,7 +6,7 @@
 /*   By: htouil <htouil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 19:37:21 by htouil            #+#    #+#             */
-/*   Updated: 2024/06/13 03:34:23 by htouil           ###   ########.fr       */
+/*   Updated: 2024/06/15 20:14:34 by htouil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,13 @@ int	main()
 			a.addNumber(2);
 			a.addNumber(5);
 			a.addNumber(3);
-			a.addNumber(4);
+			a.addNumber(6);
 			a.addNumber(1);
 			for (it = a.getCntr().begin(); it != a.getCntr().end(); it++)
 				std::cout << *it << " ";
 			std::cout << std::endl;
+			std::cout << BLUE << "Shortest span: " << RESET << a.shortestSpan() << std::endl;
+			std::cout << GREEN << "Longest span: " << RESET << a.longestSpan() << std::endl;
 		}
 		catch (const std::exception &e)
 		{

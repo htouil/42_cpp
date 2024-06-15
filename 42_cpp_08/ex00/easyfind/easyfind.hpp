@@ -6,7 +6,7 @@
 /*   By: htouil <htouil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 19:49:28 by htouil            #+#    #+#             */
-/*   Updated: 2024/06/12 03:33:10 by htouil           ###   ########.fr       */
+/*   Updated: 2024/06/15 19:46:42 by htouil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <iostream>
 # include <iterator>
+# include <algorithm>
 
 # define RESET       "\033[0m"
 # define RED         "\033[31m"

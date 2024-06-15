@@ -6,7 +6,7 @@
 /*   By: htouil <htouil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 19:38:00 by htouil            #+#    #+#             */
-/*   Updated: 2024/06/13 03:36:23 by htouil           ###   ########.fr       */
+/*   Updated: 2024/06/15 21:48:54 by htouil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ void	Span::addMultiNumbers(unsigned int y)
 	}
 }
 
+//gotta work with std::adjacent_difference
 int	Span::shortestSpan()
 {
 	std::vector<int>					vec;
@@ -87,7 +88,7 @@ int	Span::shortestSpan()
 	it = min;
 	while (*it <= *min)
 		it++;
-	return (*it - *min);
+	return (*it - *min - 1);
 }
 
 int	Span::longestSpan()

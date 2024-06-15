@@ -6,7 +6,7 @@
 /*   By: htouil <htouil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 01:25:09 by htouil            #+#    #+#             */
-/*   Updated: 2024/06/15 19:17:08 by htouil           ###   ########.fr       */
+/*   Updated: 2024/06/15 19:32:13 by htouil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,12 @@ int	main()
 		for (it = mstack1.begin(); it != mstack1.end(); it++)
 			std::cout << BLUE << *it << RESET << " ";
 		std::cout << std::endl;
-		it = mstack1.begin();
+		it = ++(mstack1.begin());
 		*it = 0;
-		std::cout << "first element of mstack1: " << GREEN << *it << std::endl;
-		*it = 1;
+		std::cout << "second element of mstack1: " << GREEN << *it << RESET << std::endl;
+		*it = 2;
+		--it;
+		std::cout << "first element of mstack1: " << GREEN << *it << RESET << std::endl;
 
 		std::cout << std::endl << GOLD << "------TEST 2------" << RESET << std::endl;
 
@@ -45,7 +47,7 @@ int	main()
 			std::cout << BLUE << *cit << RESET << " ";
 		std::cout << std::endl;
 		cit = mstack2.cbegin();
-		std::cout << "first element of mstack2: " << GREEN << *cit << std::endl;
+		std::cout << "first element of mstack2: " << GREEN << *cit << RESET << std::endl;
 
 		std::cout << std::endl << GOLD << "------TEST 3------" << RESET << std::endl;
 		MutantStack<int>					mstack3;
@@ -58,7 +60,7 @@ int	main()
 		std::cout << std::endl;
 		rit = mstack3.rbegin();
 		*rit = 0;
-		std::cout << "last element of mstack3: " << GREEN << *rit << std::endl;
+		std::cout << "last element of mstack3: " << GREEN << *rit << RESET << std::endl;
 		*rit = 1;
 
 		std::cout << std::endl << GOLD << "------TEST 4------" << RESET << std::endl;
@@ -70,7 +72,7 @@ int	main()
 			std::cout << BLUE << *crit << RESET << " ";
 		std::cout << std::endl;
 		crit = mstack4.crbegin();
-		std::cout << "last element of mstack4: " << GREEN << *crit << std::endl;
+		std::cout << "last element of mstack4: " << GREEN << *crit << RESET << std::endl;
 	}
 	return (0);
 }
