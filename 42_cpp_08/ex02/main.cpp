@@ -6,7 +6,7 @@
 /*   By: htouil <htouil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 01:25:09 by htouil            #+#    #+#             */
-/*   Updated: 2024/06/15 19:32:13 by htouil           ###   ########.fr       */
+/*   Updated: 2024/06/16 01:53:49 by htouil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,10 +67,12 @@ int	main()
 		MutantStack<int>							mstack4(mstack1);
 		MutantStack<int>::const_reverse_iterator	crit;
 
+		mstack4.pop();
 		std::cout << "mstack4: ";
 		for (crit = mstack4.crbegin(); crit != mstack4.crend(); ++crit)
 			std::cout << BLUE << *crit << RESET << " ";
 		std::cout << std::endl;
+		std::cout << "size of mstack4: " << ORANGE << mstack4.size() << RESET << std::endl;
 		crit = mstack4.crbegin();
 		std::cout << "last element of mstack4: " << GREEN << *crit << RESET << std::endl;
 	}

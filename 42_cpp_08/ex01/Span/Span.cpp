@@ -6,7 +6,7 @@
 /*   By: htouil <htouil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 19:38:00 by htouil            #+#    #+#             */
-/*   Updated: 2024/06/15 21:48:54 by htouil           ###   ########.fr       */
+/*   Updated: 2024/06/16 01:44:12 by htouil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 Span::Span(unsigned int N) : size(N) 
 {
 	std::cout << MAGENTA << "Span constructor called" << RESET << std::endl;
+	cntr.reserve(N);
 }
 
 Span::Span(const Span &src) : size(src.size)
@@ -78,17 +79,14 @@ int	Span::shortestSpan()
 {
 	std::vector<int>					vec;
 	std::vector<int>::const_iterator	min;
-	std::vector<int>::const_iterator	it;
 
 	if (this->cntr.size() <= 1)
 		throw (std::length_error("Span is too short to calculate!"));
-	vec = this->cntr;
-	std::sort(vec.begin(), vec.end());
-	min = std::min_element(vec.begin(), vec.end());
-	it = min;
-	while (*it <= *min)
-		it++;
-	return (*it - *min - 1);
+	std::sort(this->cntr.begin(), this->cntr.end());
+	vec.resize(this->size);
+	std::adjacent_difference(this->cntr.begin(), this->cntr.end(), vec.begin());
+	min = std::min_element(++(vec.begin()), vec.end());
+	return (*min);
 }
 
 int	Span::longestSpan()

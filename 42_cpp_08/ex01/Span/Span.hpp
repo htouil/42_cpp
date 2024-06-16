@@ -6,7 +6,7 @@
 /*   By: htouil <htouil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 19:37:52 by htouil            #+#    #+#             */
-/*   Updated: 2024/06/13 01:43:52 by htouil           ###   ########.fr       */
+/*   Updated: 2024/06/16 01:02:23 by htouil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <vector>
 # include <iterator>
 # include <algorithm>
+# include <numeric>
 # include <exception>
 # include <cstdlib>
 # include <ctime>

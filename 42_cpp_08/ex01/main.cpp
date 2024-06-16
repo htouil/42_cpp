@@ -6,7 +6,7 @@
 /*   By: htouil <htouil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 19:37:21 by htouil            #+#    #+#             */
-/*   Updated: 2024/06/15 20:14:34 by htouil           ###   ########.fr       */
+/*   Updated: 2024/06/16 01:47:38 by htouil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,15 @@ int	main()
 		try
 		{
 			Span								a(5);
-			std::vector<int>::const_iterator	it;
+			std::vector<int>::const_iterator	cit;
 
-			a.addNumber(2);
+			a.addNumber(8);
 			a.addNumber(5);
-			a.addNumber(3);
-			a.addNumber(6);
-			a.addNumber(1);
-			for (it = a.getCntr().begin(); it != a.getCntr().end(); it++)
-				std::cout << *it << " ";
+			a.addNumber(0);
+			a.addNumber(12);
+			a.addNumber(10);
+			for (cit = a.getCntr().begin(); cit != a.getCntr().end(); cit++)
+				std::cout << *cit << " ";
 			std::cout << std::endl;
 			std::cout << BLUE << "Shortest span: " << RESET << a.shortestSpan() << std::endl;
 			std::cout << GREEN << "Longest span: " << RESET << a.longestSpan() << std::endl;
@@ -50,11 +50,11 @@ int	main()
 		try
 		{
 			Span								a(10);
-			std::vector<int>::const_iterator	it;
+			std::vector<int>::const_iterator	cit;
 
 			a.addMultiNumbers(10);
-			for (it = a.getCntr().begin(); it != a.getCntr().end(); it++)
-					std::cout << *it << " ";
+			for (cit = a.getCntr().begin(); cit != a.getCntr().end(); cit++)
+					std::cout << *cit << " ";
 			std::cout << std::endl;
 		}
 		catch (const std::exception &e)
@@ -75,11 +75,33 @@ int	main()
 		try
 		{
 			Span								a(5);
-			std::vector<int>::const_iterator	it;
+			std::vector<int>::const_iterator	cit;
 
 			a.addMultiNumbers(5);
-			for (it = a.getCntr().begin(); it != a.getCntr().end(); it++)
-					std::cout << *it << " ";
+			for (cit = a.getCntr().begin(); cit != a.getCntr().end(); cit++)
+					std::cout << *cit << " ";
+			std::cout << std::endl;
+			std::cout << BLUE << "Shortest span: " << RESET << a.shortestSpan() << std::endl;
+			std::cout << GREEN << "Longest span: " << RESET << a.longestSpan() << std::endl;
+		}
+		catch(const std::exception &e)
+		{
+			std::cerr << RED << "Found exception: " << RESET << e.what() << RESET << std::endl;
+		}
+		
+	}
+
+	{
+		std::cout << YELLOW << "------TEST 4------" << RESET << std::endl;
+
+		try
+		{
+			Span								a(10000);
+			std::vector<int>::const_iterator	cit;
+
+			a.addMultiNumbers(10000);
+			for (cit = a.getCntr().begin(); cit != a.getCntr().end(); cit++)
+					std::cout << *cit << " ";
 			std::cout << std::endl;
 			std::cout << BLUE << "Shortest span: " << RESET << a.shortestSpan() << std::endl;
 			std::cout << GREEN << "Longest span: " << RESET << a.longestSpan() << std::endl;
