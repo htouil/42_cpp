@@ -6,7 +6,7 @@
 /*   By: htouil <htouil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 19:50:00 by htouil            #+#    #+#             */
-/*   Updated: 2024/06/15 20:02:49 by htouil           ###   ########.fr       */
+/*   Updated: 2024/06/20 19:11:03 by htouil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,3 @@ void	easyfind(T &vec, int to_find)
 	else
 		std::cerr << RED << "No occurance of the searched integer in the container." << RESET << std::endl;
 }
-
-

@@ -6,7 +6,7 @@
 /*   By: htouil <htouil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 01:25:09 by htouil            #+#    #+#             */
-/*   Updated: 2024/06/16 01:53:49 by htouil           ###   ########.fr       */
+/*   Updated: 2024/06/20 20:59:34 by htouil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,10 @@ int	main()
 		--it;
 		std::cout << "first element of mstack1: " << GREEN << *it << RESET << std::endl;
 
+		std::cout << std::endl;
+		std::cout << "--------------------------------------------------------------------------" << std::endl;
+		std::cout << std::endl;
+
 		std::cout << std::endl << GOLD << "------TEST 2------" << RESET << std::endl;
 
 		MutantStack<int>					mstack2(mstack1);
@@ -48,6 +52,10 @@ int	main()
 		std::cout << std::endl;
 		cit = mstack2.cbegin();
 		std::cout << "first element of mstack2: " << GREEN << *cit << RESET << std::endl;
+
+		std::cout << std::endl;
+		std::cout << "--------------------------------------------------------------------------" << std::endl;
+		std::cout << std::endl;
 
 		std::cout << std::endl << GOLD << "------TEST 3------" << RESET << std::endl;
 		MutantStack<int>					mstack3;
@@ -62,6 +70,10 @@ int	main()
 		*rit = 0;
 		std::cout << "last element of mstack3: " << GREEN << *rit << RESET << std::endl;
 		*rit = 1;
+
+		std::cout << std::endl;
+		std::cout << "--------------------------------------------------------------------------" << std::endl;
+		std::cout << std::endl;
 
 		std::cout << std::endl << GOLD << "------TEST 4------" << RESET << std::endl;
 		MutantStack<int>							mstack4(mstack1);

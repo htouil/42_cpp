@@ -6,7 +6,7 @@
 /*   By: htouil <htouil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 19:38:00 by htouil            #+#    #+#             */
-/*   Updated: 2024/06/16 01:44:12 by htouil           ###   ########.fr       */
+/*   Updated: 2024/06/20 19:55:44 by htouil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	Span::addNumber(int x)
 
 void	Span::addMultiNumbers(unsigned int y)
 {
-	int	num;
+	int				num;
 	unsigned int	i;
 
 	std::srand(std::time(0));
@@ -74,17 +74,18 @@ void	Span::addMultiNumbers(unsigned int y)
 	}
 }
 
-//gotta work with std::adjacent_difference
 int	Span::shortestSpan()
 {
+	std::vector<int>					tmp;
 	std::vector<int>					vec;
 	std::vector<int>::const_iterator	min;
 
 	if (this->cntr.size() <= 1)
 		throw (std::length_error("Span is too short to calculate!"));
-	std::sort(this->cntr.begin(), this->cntr.end());
-	vec.resize(this->size);
-	std::adjacent_difference(this->cntr.begin(), this->cntr.end(), vec.begin());
+	tmp = this->cntr;
+	std::sort(tmp.begin(), tmp.end());
+	vec.resize(this->cntr.size());
+	std::adjacent_difference(tmp.begin(), tmp.end(), vec.begin());
 	min = std::min_element(++(vec.begin()), vec.end());
 	return (*min);
 }
