@@ -6,7 +6,7 @@
 /*   By: htouil <htouil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 01:26:41 by htouil            #+#    #+#             */
-/*   Updated: 2024/06/20 20:59:10 by htouil           ###   ########.fr       */
+/*   Updated: 2024/06/21 20:32:24 by htouil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,13 +53,13 @@ typename MutantStack<T>::iterator	MutantStack<T>::end()
 }
 
 template<typename T>
-typename MutantStack<T>::const_iterator	MutantStack<T>::cbegin()
+typename MutantStack<T>::const_iterator	MutantStack<T>::begin() const
 {
 	return (this->c.begin());
 }
 
 template<typename T>
-typename MutantStack<T>::const_iterator	MutantStack<T>::cend()
+typename MutantStack<T>::const_iterator	MutantStack<T>::end() const
 {
 	return (this->c.end());
 }
@@ -77,13 +77,13 @@ typename MutantStack<T>::reverse_iterator	MutantStack<T>::rend()
 }
 
 template<typename T>
-typename MutantStack<T>::const_reverse_iterator	MutantStack<T>::crbegin()
+typename MutantStack<T>::const_reverse_iterator	MutantStack<T>::rbegin() const
 {
 	return (this->c.rbegin());
 }
 
 template<typename T>
-typename MutantStack<T>::const_reverse_iterator	MutantStack<T>::crend()
+typename MutantStack<T>::const_reverse_iterator	MutantStack<T>::rend() const
 {
 	return (this->c.rend());
 }

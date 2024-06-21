@@ -6,7 +6,7 @@
 /*   By: htouil <htouil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 01:25:09 by htouil            #+#    #+#             */
-/*   Updated: 2024/06/20 20:59:34 by htouil           ###   ########.fr       */
+/*   Updated: 2024/06/21 20:33:43 by htouil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,10 @@ int	main()
 		MutantStack<int>::const_iterator	cit;
 
 		std::cout << "mstack2: " ;
-		for (cit = mstack2.cbegin(); cit != mstack2.cend(); cit++)
+		for (cit = mstack2.begin(); cit != mstack2.end(); cit++)
 			std::cout << BLUE << *cit << RESET << " ";
 		std::cout << std::endl;
-		cit = mstack2.cbegin();
+		cit = mstack2.begin();
 		std::cout << "first element of mstack2: " << GREEN << *cit << RESET << std::endl;
 
 		std::cout << std::endl;
@@ -81,11 +81,11 @@ int	main()
 
 		mstack4.pop();
 		std::cout << "mstack4: ";
-		for (crit = mstack4.crbegin(); crit != mstack4.crend(); ++crit)
+		for (crit = mstack4.rbegin(); crit != mstack4.rend(); ++crit)
 			std::cout << BLUE << *crit << RESET << " ";
 		std::cout << std::endl;
 		std::cout << "size of mstack4: " << ORANGE << mstack4.size() << RESET << std::endl;
-		crit = mstack4.crbegin();
+		crit = mstack4.rbegin();
 		std::cout << "last element of mstack4: " << GREEN << *crit << RESET << std::endl;
 	}
 	return (0);

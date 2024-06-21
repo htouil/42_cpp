@@ -6,7 +6,7 @@
 /*   By: htouil <htouil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/10 19:48:56 by htouil            #+#    #+#             */
-/*   Updated: 2024/06/20 19:22:04 by htouil           ###   ########.fr       */
+/*   Updated: 2024/06/21 20:34:31 by htouil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include "easyfind/easyfind.tpp"
 #include <vector>
 #include <list>
-#include <array>
 
 int	main()
 {
@@ -48,21 +47,6 @@ int	main()
 		lst.push_back(4);
 		lst.push_back(5);
 		::easyfind(lst, 0);
-	}
-
-	{
-		std::cout << std::endl;
-		std::cout << "--------------------------------------------------------------------------" << std::endl;
-		std::cout << std::endl;
-	}
-
-	{
-		std::cout << YELLOW << "------TEST 3-----" << RESET << std::endl;
-
-		std::array<int, 5>	arr;
-
-		std::fill(arr.begin(), arr.end(), 1);
-		::easyfind(arr, 1);
 	}
 	return (0);
 }
