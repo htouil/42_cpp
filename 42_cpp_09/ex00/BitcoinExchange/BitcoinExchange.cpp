@@ -6,7 +6,10 @@
 /*   By: htouil <htouil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 15:57:40 by htouil            #+#    #+#             */
-/*   Updated: 2024/06/26 15:57:41 by htouil           ###   ########.fr       */
+/*   Updated: 2024/06/27 00:44:55 by htouil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "BitcoinExchange/BitcoinExchange.hpp"
+
 
