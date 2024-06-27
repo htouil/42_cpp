@@ -6,7 +6,7 @@
 /*   By: htouil <htouil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 15:57:42 by htouil            #+#    #+#             */
-/*   Updated: 2024/06/27 01:14:46 by htouil           ###   ########.fr       */
+/*   Updated: 2024/06/27 23:56:52 by htouil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,10 @@
 # define BITCOINEXCHANGE_HPP
 
 # include <iostream>
-# include <utility>
+# include <fstream>
+# include <map>
+# include <cstring>
+# include <cstdlib>
 
 # define RESET       "\033[0m"
 # define RED         "\033[31m"
@@ -41,14 +44,9 @@
 # define TURQUOISE   "\033[38;5;45m"
 # define INDIGO      "\033[38;5;54m"
 
-template<typename T>
-class BtcBase : std::pair
-{
-	private:
-		std::string	date;
-		T			price;
-	public:
-		
-};
+typedef  std::map<std::string, double>	map;
+
+map		getDataBase();
+void	parse_display_input(std::ifstream inputfile);
 
 #endif
