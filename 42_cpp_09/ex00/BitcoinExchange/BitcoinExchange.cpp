@@ -6,11 +6,11 @@
 /*   By: htouil <htouil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 15:57:40 by htouil            #+#    #+#             */
-/*   Updated: 2024/06/27 23:56:51 by htouil           ###   ########.fr       */
+/*   Updated: 2024/07/04 20:28:59 by htouil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "BitcoinExchange/BitcoinExchange.hpp"
+#include "BitcoinExchange.hpp"
 
 void	delete_arr(char **arr)
 {
@@ -21,7 +21,7 @@ void	delete_arr(char **arr)
 	delete[] arr;
 }
 
-char	**split(std::string line, char delim)
+char	**split_elements(std::string line, char delim)
 {
 	size_t	pos;
 	size_t	rest;
@@ -65,7 +65,7 @@ map	getDataBase()
 	std::getline(datafile, line);
 	while (std::getline(datafile, line))
 	{
-		set = split(line, ',');
+		set = split_elements(line, ',');
 		// std::cout << "\'" << set[0] << "\'" << " | " << "\'" << set[1] << "\'" << std::endl;
 		x = atof(set[1]);
 		tmpbase.insert(std::make_pair(std::string(set[0]), x));
@@ -74,7 +74,46 @@ map	getDataBase()
 	return (tmpbase);
 }
 
-void	parse_display_input(std::ifstream inputfile)
+int	count_elements(std::string line, char c)
+{
+	int	i;
+	int	x;
+
+	x = 0;
+	for (i = 0; i < line.length(); i++)
+	{
+		if (line[i] == c)
+			x++;
+	}
+	return (x);
+}
+
+void	parse_elements(char **set)
 {
 	
+}
+
+void	parse_display_input(std::ifstream inputfile)
+{
+	std::string	line;
+	char		**set;
+
+	std::getline(inputfile, line);
+	if (!line.empty())
+	{
+		std::cerr << RED << "The input file is empty!" << RESET << std::endl;
+		exit(1);
+	}
+	if (line != "date | value")
+	{
+		std::cerr << RED << "Wrong file content!" << RESET << std::endl;
+		exit(1);
+	}
+	while (std::getline(inputfile, line))
+	{
+		if (count_elements(line, '|') != 1)
+			continue ;
+		set = split_elements(line, '|');
+		parse_elements(set);
+	}
 }
