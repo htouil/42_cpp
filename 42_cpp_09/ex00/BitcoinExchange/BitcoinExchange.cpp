@@ -6,7 +6,7 @@
 /*   By: htouil <htouil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 15:57:40 by htouil            #+#    #+#             */
-/*   Updated: 2024/07/04 20:28:59 by htouil           ###   ########.fr       */
+/*   Updated: 2024/07/07 17:47:09 by htouil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,8 +88,10 @@ int	count_elements(std::string line, char c)
 	return (x);
 }
 
-void	parse_elements(char **set)
+int	parse_elements(char **set)
 {
+	if (!set[0] || !set[1])
+		return (1);
 	
 }
 
@@ -115,5 +117,6 @@ void	parse_display_input(std::ifstream inputfile)
 			continue ;
 		set = split_elements(line, '|');
 		parse_elements(set);
+		delete_arr(set);
 	}
 }
