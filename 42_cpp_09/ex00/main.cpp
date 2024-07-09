@@ -6,7 +6,7 @@
 /*   By: htouil <htouil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 15:57:44 by htouil            #+#    #+#             */
-/*   Updated: 2024/07/04 19:58:19 by htouil           ###   ########.fr       */
+/*   Updated: 2024/07/09 19:14:40 by htouil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	main(int ac, char **av)
 {
-	if (ac == 1)
+	if (ac == 2)
 	{
 		map				database;
 		map				input;
@@ -30,7 +30,7 @@ int	main(int ac, char **av)
 			std::cerr << RED <<  "Error\n" << std::endl << "Can't open the input file!" << RESET << std::endl;
 			return (1);
 		}
-		// parse_display_input(inputfile);
+		parse_display_input(inputfile);
 	}
 	else
 	{

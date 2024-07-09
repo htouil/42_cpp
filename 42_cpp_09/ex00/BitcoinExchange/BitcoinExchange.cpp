@@ -6,7 +6,7 @@
 /*   By: htouil <htouil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 15:57:40 by htouil            #+#    #+#             */
-/*   Updated: 2024/07/07 17:47:09 by htouil           ###   ########.fr       */
+/*   Updated: 2024/07/09 21:56:23 by htouil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,34 +74,55 @@ map	getDataBase()
 	return (tmpbase);
 }
 
-int	count_elements(std::string line, char c)
-{
-	int	i;
-	int	x;
+// int	count_elements(std::string line, char c)
+// {
+// 	int	i;
+// 	int	x;
 
-	x = 0;
-	for (i = 0; i < line.length(); i++)
-	{
-		if (line[i] == c)
-			x++;
-	}
-	return (x);
+// 	x = 0;
+// 	for (i = 0; i < line.length(); i++)
+// 	{
+// 		if (line[i] == c)
+// 			x++;
+// 	}
+// 	return (x);
+// }
+
+bool	is_leap_year(int year)
+{
+	if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0))
+		return (true);
+	return (false);
 }
 
 int	parse_elements(char **set)
 {
+	double	x;
+	int		day, month, year;
+
 	if (!set[0] || !set[1])
 		return (1);
-	
+	x = std::stod(set[1]);
+	if (x > 1000 || x < 0)
+		return (1);
+	// std::cout << set[0];
+	std::string	date(set[0]);
+	if (std::count(date.begin(), date.end(), '-') != 2 || sscanf(set[0], "%d-%d-%d", &year, &month, &day) != 3)
+		return (1);
+	else
+	{
+		//check date limits here
+	}
+	return (0);
 }
 
-void	parse_display_input(std::ifstream inputfile)
+void	parse_display_input(std::ifstream &inputfile)
 {
 	std::string	line;
 	char		**set;
 
 	std::getline(inputfile, line);
-	if (!line.empty())
+	if (line.empty())
 	{
 		std::cerr << RED << "The input file is empty!" << RESET << std::endl;
 		exit(1);
@@ -113,7 +134,8 @@ void	parse_display_input(std::ifstream inputfile)
 	}
 	while (std::getline(inputfile, line))
 	{
-		if (count_elements(line, '|') != 1)
+		// std::cout << line << std::endl;
+		if (std::count(line.begin(), line.end(), '|') != 1)
 			continue ;
 		set = split_elements(line, '|');
 		parse_elements(set);
