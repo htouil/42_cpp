@@ -6,11 +6,22 @@
 /*   By: htouil <htouil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 15:57:40 by htouil            #+#    #+#             */
-/*   Updated: 2024/07/09 21:56:23 by htouil           ###   ########.fr       */
+/*   Updated: 2024/07/11 21:55:47 by htouil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
+
+int	is_empty_string(std::string line)
+{
+	std::string::iterator	it;
+	for (it = line.begin(); it != line.end(); it++)
+	{
+		if (!std::isspace(*it))
+			return (0);
+	}
+	return (1);
+}
 
 void	delete_arr(char **arr)
 {
@@ -66,7 +77,6 @@ map	getDataBase()
 	while (std::getline(datafile, line))
 	{
 		set = split_elements(line, ',');
-		// std::cout << "\'" << set[0] << "\'" << " | " << "\'" << set[1] << "\'" << std::endl;
 		x = atof(set[1]);
 		tmpbase.insert(std::make_pair(std::string(set[0]), x));
 		delete_arr(set);
@@ -95,26 +105,76 @@ bool	is_leap_year(int year)
 	return (false);
 }
 
-int	parse_elements(char **set)
+int	parse_date(char **set)
 {
-	double	x;
-	int		day, month, year;
-
-	if (!set[0] || !set[1])
-		return (1);
-	x = std::stod(set[1]);
-	if (x > 1000 || x < 0)
-		return (1);
-	// std::cout << set[0];
+	int			day, month, year;
 	std::string	date(set[0]);
+
 	if (std::count(date.begin(), date.end(), '-') != 2 || sscanf(set[0], "%d-%d-%d", &year, &month, &day) != 3)
 		return (1);
 	else
 	{
-		//check date limits here
+		if ((year < 0 || year > 2017) || (month < 1 || month > 12))
+			return (1);
+		if (month <= 7 && month != 2)
+		{
+			if ((month % 2 == 0) && (day < 1 || day > 30))
+				return (1);
+			else if ((month % 2 != 0) && (day < 1 || day > 31))
+				return (1);
+		}
+		else
+		{
+			if ((month % 2 == 0) && (day < 1 || day > 31))
+				return (1);
+			else if ((month % 2 != 0) && (day < 1 || day > 30))
+				return (1);
+		}
+		if (month == 2)
+		{
+			if (((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0)) && (day < 1 || day > 29))
+				return (1);
+			else if (!((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0)) && (day < 1 || day > 28))
+				return (1);
+		}
+		if (year == 2017 && month == 2 && day > 1)
+			return (1);
 	}
 	return (0);
 }
+
+int	parse_elements(char **set, std::string line)
+{
+	double	x;
+
+	if (!set[0] || !set[1])
+	{
+		std::cout << "Error: bad input => " << CYAN << line << RESET << std::endl;
+		return (1);
+	}
+	x = std::stod(set[1]);
+	if (x > 1000)
+	{
+		std::cout << "Error: input value is too large => " << CYAN << set[1] << RESET << std::endl;
+		return (1);
+	}
+	else if (x < 0)
+	{
+		std::cout << "Error: input value is negative => " << CYAN << set[1] << RESET << std::endl;
+		return (1);
+	}
+	if (parse_date(set) == 1)
+	{
+		std::cout << "Error: wrong date => " << CYAN << set[0] << RESET << std::endl;
+		return (1);
+	}
+	return (0);
+}
+
+// void	display_elements(char **set)
+// {
+	
+// }
 
 void	parse_display_input(std::ifstream &inputfile)
 {
@@ -122,7 +182,7 @@ void	parse_display_input(std::ifstream &inputfile)
 	char		**set;
 
 	std::getline(inputfile, line);
-	if (line.empty())
+	if (line.empty() || is_empty_string(line) == 1)
 	{
 		std::cerr << RED << "The input file is empty!" << RESET << std::endl;
 		exit(1);
@@ -134,11 +194,18 @@ void	parse_display_input(std::ifstream &inputfile)
 	}
 	while (std::getline(inputfile, line))
 	{
-		// std::cout << line << std::endl;
-		if (std::count(line.begin(), line.end(), '|') != 1)
+		// std::cout << YELLOW << line << RESET << std::endl;
+		if (is_empty_string(line) == 1)
 			continue ;
+		if (std::count(line.begin(), line.end(), '|') != 1)
+		{
+			std::cout << "Error: " << "bad input => " << CYAN << line << RESET << std::endl;
+			continue ;
+		}
 		set = split_elements(line, '|');
-		parse_elements(set);
+		if (parse_elements(set, line) == 1)
+			continue ;
+		// display_elements(set);
 		delete_arr(set);
 	}
 }
