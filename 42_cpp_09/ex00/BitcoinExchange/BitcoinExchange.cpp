@@ -6,7 +6,7 @@
 /*   By: htouil <htouil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 15:57:40 by htouil            #+#    #+#             */
-/*   Updated: 2024/07/11 21:55:47 by htouil           ###   ########.fr       */
+/*   Updated: 2024/07/14 03:12:55 by htouil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,7 +152,8 @@ int	parse_elements(char **set, std::string line)
 		std::cout << "Error: bad input => " << CYAN << line << RESET << std::endl;
 		return (1);
 	}
-	x = std::stod(set[1]);
+	std::stringstream	ss(set[1]);
+	ss >> x;
 	if (x > 1000)
 	{
 		std::cout << "Error: input value is too large => " << CYAN << set[1] << RESET << std::endl;
@@ -171,12 +172,24 @@ int	parse_elements(char **set, std::string line)
 	return (0);
 }
 
-// void	display_elements(char **set)
-// {
-	
-// }
+bool	pair_compare(const std::pair<std::string, double> &pair,const std::string &date)
+{
+	return (pair.first < date);
+}
 
-void	parse_display_input(std::ifstream &inputfile)
+void	display_elements(char **set, map database)
+{
+	std::vector<std::pair<std::string, double> >::iterator	it;
+	std::string												date(set[0]);
+
+	std::vector<std::pair<std::string, double> > data_vector(database.begin(), database.end());
+	it = std::lower_bound(data_vector.begin(), data_vector.end(), date, pair_compare);
+	if (it != data_vector.begin())
+		--it;
+	// std::cout << date << " => " << it->first << " | " << it->second << std::endl;
+}
+
+void	parse_display_input(std::ifstream &inputfile, map databse)
 {
 	std::string	line;
 	char		**set;
@@ -205,7 +218,7 @@ void	parse_display_input(std::ifstream &inputfile)
 		set = split_elements(line, '|');
 		if (parse_elements(set, line) == 1)
 			continue ;
-		// display_elements(set);
+		display_elements(set, databse);
 		delete_arr(set);
 	}
 }

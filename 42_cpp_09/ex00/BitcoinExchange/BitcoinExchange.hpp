@@ -6,7 +6,7 @@
 /*   By: htouil <htouil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 15:57:42 by htouil            #+#    #+#             */
-/*   Updated: 2024/07/09 21:11:16 by htouil           ###   ########.fr       */
+/*   Updated: 2024/07/14 02:55:01 by htouil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,9 @@
 # include <cstring>
 # include <cstdlib>
 # include <ctime>
+# include <algorithm>
+# include <sstream>
+# include <vector>
 
 # define RESET       "\033[0m"
 # define RED         "\033[31m"
@@ -48,6 +51,6 @@
 typedef  std::map<std::string, double>	map;
 
 map		getDataBase();
-void	parse_display_input(std::ifstream &inputfile);
+void	parse_display_input(std::ifstream &inputfile, map database);
 
 #endif
