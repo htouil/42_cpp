@@ -6,7 +6,7 @@
 /*   By: htouil <htouil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 15:57:40 by htouil            #+#    #+#             */
-/*   Updated: 2024/07/14 03:12:55 by htouil           ###   ########.fr       */
+/*   Updated: 2024/07/15 02:03:43 by htouil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,31 @@ void	delete_arr(char **arr)
 	if (arr[1])
 		delete[] arr[1];
 	delete[] arr;
+}
+
+char	*trim_str(char **str)
+{
+	int		len;
+	int		i;
+	int		j;
+	char	*tmp;
+
+	if ((*str) == NULL)
+		return (NULL);
+	len = std::strlen((*str));
+	i = 0;
+	while (i < len && std::isspace((*str)[i]))
+		i++;
+	j = len;
+	while (j > i && std::isspace((*str)[j - 1]))
+		j--;
+	len = j - i;
+	tmp = new char [len + 1];
+	for (int k = 0; k < len; k++)
+		tmp[k] = (*str)[k + i];
+	tmp[len] = '\0';
+	delete[] (*str);
+	return (tmp);
 }
 
 char	**split_elements(std::string line, char delim)
@@ -57,6 +82,8 @@ char	**split_elements(std::string line, char delim)
 		res[0] = new char [line.length() + 1];
 		std::strcpy(res[0], line.c_str());
 	}
+	res[0] = trim_str(&res[0]);
+	res[1] = trim_str(&res[1]);
 	return (res);
 }
 
@@ -149,24 +176,26 @@ int	parse_elements(char **set, std::string line)
 
 	if (!set[0] || !set[1])
 	{
-		std::cout << "Error: bad input => " << CYAN << line << RESET << std::endl;
+		std::cout << "Error: bad input => " << line << RESET << std::endl;
 		return (1);
 	}
-	std::stringstream	ss(set[1]);
-	ss >> x;
+	// std::stringstream	ss(set[1]);
+	// ss >> x;
+	x = atof(set[1]);
+	// std::cout << "x : " << x << std::endl;
 	if (x > 1000)
 	{
-		std::cout << "Error: input value is too large => " << CYAN << set[1] << RESET << std::endl;
+		std::cout << "Error: input value is too large => " << set[1] << RESET << std::endl;
 		return (1);
 	}
 	else if (x < 0)
 	{
-		std::cout << "Error: input value is negative => " << CYAN << set[1] << RESET << std::endl;
+		std::cout << "Error: input value is negative => " << set[1] << RESET << std::endl;
 		return (1);
 	}
 	if (parse_date(set) == 1)
 	{
-		std::cout << "Error: wrong date => " << CYAN << set[0] << RESET << std::endl;
+		std::cout << "Error: wrong date => " << set[0] << RESET << std::endl;
 		return (1);
 	}
 	return (0);
@@ -182,15 +211,22 @@ void	display_elements(char **set, map database)
 	std::vector<std::pair<std::string, double> >::iterator	it;
 	std::string												date(set[0]);
 
-	std::vector<std::pair<std::string, double> > data_vector(database.begin(), database.end());
-	it = std::lower_bound(data_vector.begin(), data_vector.end(), date, pair_compare);
-	if (it != data_vector.begin())
-		--it;
+	if (date < "2011-10-14")
+		std::cout << set[0] << " => " << set[1] << " = " << (0.3 * atof(set[1])) << std::endl;
+	else
+	{
+		std::vector<std::pair<std::string, double> > data_vector(database.begin(), database.end());
+		it = std::lower_bound(data_vector.begin(), data_vector.end(), date, pair_compare);
+		if (it != data_vector.begin())
+			--it;
+		std::cout << set[0] << " => " << set[1] << " = " << (it->second * atof(set[1])) << std::endl;
+	}
 	// std::cout << date << " => " << it->first << " | " << it->second << std::endl;
 }
 
 void	parse_display_input(std::ifstream &inputfile, map databse)
 {
+	(void)databse;
 	std::string	line;
 	char		**set;
 
@@ -207,12 +243,11 @@ void	parse_display_input(std::ifstream &inputfile, map databse)
 	}
 	while (std::getline(inputfile, line))
 	{
-		// std::cout << YELLOW << line << RESET << std::endl;
 		if (is_empty_string(line) == 1)
 			continue ;
 		if (std::count(line.begin(), line.end(), '|') != 1)
 		{
-			std::cout << "Error: " << "bad input => " << CYAN << line << RESET << std::endl;
+			std::cout << "Error: " << "bad input => " << line << RESET << std::endl;
 			continue ;
 		}
 		set = split_elements(line, '|');
