@@ -6,7 +6,7 @@
 /*   By: htouil <htouil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 15:57:44 by htouil            #+#    #+#             */
-/*   Updated: 2024/07/15 18:50:35 by htouil           ###   ########.fr       */
+/*   Updated: 2024/07/15 18:59:16 by htouil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ int	main(int ac, char **av)
 {
 	if (ac == 2)
 	{
-		map				database;
-		map				input;
+		vector			database;
+		vector			input;
 		std::ifstream	inputfile(av[1]);
 
 		database = getDataBase();

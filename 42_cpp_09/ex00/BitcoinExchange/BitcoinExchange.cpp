@@ -6,7 +6,7 @@
 /*   By: htouil <htouil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 15:57:40 by htouil            #+#    #+#             */
-/*   Updated: 2024/07/15 18:50:15 by htouil           ###   ########.fr       */
+/*   Updated: 2024/07/15 19:19:41 by htouil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,12 +87,12 @@ char	**split_elements(std::string line, char delim)
 	return (res);
 }
 
-map	getDataBase()
+vector	getDataBase()
 {
-	map			tmpbase;
-	std::string	line;
-	char		**set;
-	double		x;
+	vector			tmpbase;
+	std::string		line;
+	char			**set;
+	double			x;
 	std::ifstream	datafile("data.csv");
 
 	if (!datafile.is_open())
@@ -105,7 +105,7 @@ map	getDataBase()
 	{
 		set = split_elements(line, ',');
 		x = atof(set[1]);
-		tmpbase.insert(std::make_pair(std::string(set[0]), x));
+		tmpbase.push_back(std::make_pair(std::string(set[0]), x));
 		delete_arr(set);
 	}
 	return (tmpbase);
@@ -189,7 +189,7 @@ bool	pair_compare(const std::pair<std::string, double> &pair,const std::string &
 	return (pair.first < date);
 }
 
-void	display_elements(char **set, map database)
+void	display_elements(char **set, vector database)///////////////////////////
 {
 	std::vector<std::pair<std::string, double> >::iterator	it;
 	std::string												date(set[0]);
@@ -198,17 +198,17 @@ void	display_elements(char **set, map database)
 		std::cout << set[0] << " => " << set[1] << " = " << (0.3 * atof(set[1])) << std::endl;
 	else
 	{
-		std::vector<std::pair<std::string, double> > data_vector(database.begin(), database.end());
-		it = std::lower_bound(data_vector.begin(), data_vector.end(), date, pair_compare);
-		if (it != data_vector.begin())
+		// std::vector<std::pair<std::string, double> > data_vector(database.begin(), database.end());
+		it = std::lower_bound(database.begin(), database.end(), date, pair_compare);
+		// std::cout << it->first << " | " << it->second << " | " << date << std::endl;
+		if (it != database.begin() && it->first != date)
 			--it;
 		std::cout << set[0] << " => " << set[1] << " = " << (it->second * atof(set[1])) << std::endl;
 	}
 }
 
-void	parse_display_input(std::ifstream &inputfile, map databse)
+void	parse_display_input(std::ifstream &inputfile, vector databse)
 {
-	(void)databse;
 	std::string	line;
 	char		**set;
 

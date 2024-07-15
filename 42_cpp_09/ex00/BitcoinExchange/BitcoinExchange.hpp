@@ -6,21 +6,21 @@
 /*   By: htouil <htouil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 15:57:42 by htouil            #+#    #+#             */
-/*   Updated: 2024/07/15 18:49:35 by htouil           ###   ########.fr       */
+/*   Updated: 2024/07/15 19:06:34 by htouil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BITCOINEXCHANGE_HPP
 # define BITCOINEXCHANGE_HPP
 
+# include <vector>
+# include <utility>
 # include <iostream>
 # include <fstream>
-# include <map>
 # include <cstring>
 # include <cstdlib>
 # include <ctime>
 # include <algorithm>
-# include <vector>
 
 # define RESET       "\033[0m"
 # define RED         "\033[31m"
@@ -47,9 +47,9 @@
 # define TURQUOISE   "\033[38;5;45m"
 # define INDIGO      "\033[38;5;54m"
 
-typedef  std::map<std::string, double>	map;
+typedef std::vector<std::pair<std::string, double> >	vector; 
 
-map		getDataBase();
-void	parse_display_input(std::ifstream &inputfile, map database);
+vector		getDataBase();
+void		parse_display_input(std::ifstream &inputfile, vector database);
 
 #endif
