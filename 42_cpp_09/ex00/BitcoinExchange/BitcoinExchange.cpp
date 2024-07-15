@@ -6,7 +6,7 @@
 /*   By: htouil <htouil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 15:57:40 by htouil            #+#    #+#             */
-/*   Updated: 2024/07/15 19:58:41 by htouil           ###   ########.fr       */
+/*   Updated: 2024/07/15 21:55:52 by htouil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,7 +127,11 @@ int	parse_date(char **set)
 		return (1);
 	else
 	{
-		if ((year < 0 || year > 2017) || (month < 1 || month > 12))
+		if (year == 2022 && month == 3 && day > 29)
+			return (1);
+		if (year == 2009 && month == 1 && day < 2)
+			return (1);
+		if ((year < 2009 || year > 2022) || (month < 1 || month > 12))
 			return (1);
 		if (month <= 7 && month != 2)
 		{
@@ -150,8 +154,6 @@ int	parse_date(char **set)
 			else if (!((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0)) && (day < 1 || day > 28))
 				return (1);
 		}
-		if (year == 2017 && month == 2 && day > 1)
-			return (1);
 	}
 	return (0);
 }
@@ -194,15 +196,10 @@ void	display_elements(char **set, vector database)
 	std::vector<std::pair<std::string, double> >::iterator	it;
 	std::string												date(set[0]);
 
-	if (date < "2011-10-14")
-		std::cout << set[0] << " => " << set[1] << " = " << (0.3 * atof(set[1])) << std::endl;
-	else
-	{
-		it = std::lower_bound(database.begin(), database.end(), date, pair_compare);
-		if (it != database.begin() && it->first != date)
-			--it;
-		std::cout << set[0] << " => " << set[1] << " = " << (it->second * atof(set[1])) << std::endl;
-	}
+	it = std::lower_bound(database.begin(), database.end(), date, pair_compare);
+	if (it != database.begin() && it->first != date)
+		--it;
+	std::cout << set[0] << " => " << set[1] << " = " << (it->second * atof(set[1])) << std::endl;
 }
 
 void	parse_display_input(std::ifstream &inputfile, vector databse)
