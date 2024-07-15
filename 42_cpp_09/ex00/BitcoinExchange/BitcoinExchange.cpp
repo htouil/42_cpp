@@ -6,7 +6,7 @@
 /*   By: htouil <htouil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 15:57:40 by htouil            #+#    #+#             */
-/*   Updated: 2024/07/15 02:03:43 by htouil           ###   ########.fr       */
+/*   Updated: 2024/07/15 18:50:15 by htouil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,20 +111,6 @@ map	getDataBase()
 	return (tmpbase);
 }
 
-// int	count_elements(std::string line, char c)
-// {
-// 	int	i;
-// 	int	x;
-
-// 	x = 0;
-// 	for (i = 0; i < line.length(); i++)
-// 	{
-// 		if (line[i] == c)
-// 			x++;
-// 	}
-// 	return (x);
-// }
-
 bool	is_leap_year(int year)
 {
 	if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0))
@@ -179,10 +165,7 @@ int	parse_elements(char **set, std::string line)
 		std::cout << "Error: bad input => " << line << RESET << std::endl;
 		return (1);
 	}
-	// std::stringstream	ss(set[1]);
-	// ss >> x;
 	x = atof(set[1]);
-	// std::cout << "x : " << x << std::endl;
 	if (x > 1000)
 	{
 		std::cout << "Error: input value is too large => " << set[1] << RESET << std::endl;
@@ -221,7 +204,6 @@ void	display_elements(char **set, map database)
 			--it;
 		std::cout << set[0] << " => " << set[1] << " = " << (it->second * atof(set[1])) << std::endl;
 	}
-	// std::cout << date << " => " << it->first << " | " << it->second << std::endl;
 }
 
 void	parse_display_input(std::ifstream &inputfile, map databse)
