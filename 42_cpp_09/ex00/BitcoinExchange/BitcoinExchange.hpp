@@ -6,7 +6,7 @@
 /*   By: htouil <htouil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 15:57:42 by htouil            #+#    #+#             */
-/*   Updated: 2024/07/15 19:06:34 by htouil           ###   ########.fr       */
+/*   Updated: 2024/07/15 19:56:44 by htouil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 
 # include <vector>
 # include <utility>
+# include <algorithm>
 # include <iostream>
 # include <fstream>
 # include <cstring>
 # include <cstdlib>
 # include <ctime>
-# include <algorithm>
 
 # define RESET       "\033[0m"
 # define RED         "\033[31m"

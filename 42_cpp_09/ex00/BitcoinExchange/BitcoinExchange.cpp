@@ -6,7 +6,7 @@
 /*   By: htouil <htouil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 15:57:40 by htouil            #+#    #+#             */
-/*   Updated: 2024/07/15 19:19:41 by htouil           ###   ########.fr       */
+/*   Updated: 2024/07/15 19:58:41 by htouil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -189,7 +189,7 @@ bool	pair_compare(const std::pair<std::string, double> &pair,const std::string &
 	return (pair.first < date);
 }
 
-void	display_elements(char **set, vector database)///////////////////////////
+void	display_elements(char **set, vector database)
 {
 	std::vector<std::pair<std::string, double> >::iterator	it;
 	std::string												date(set[0]);
@@ -198,9 +198,7 @@ void	display_elements(char **set, vector database)///////////////////////////
 		std::cout << set[0] << " => " << set[1] << " = " << (0.3 * atof(set[1])) << std::endl;
 	else
 	{
-		// std::vector<std::pair<std::string, double> > data_vector(database.begin(), database.end());
 		it = std::lower_bound(database.begin(), database.end(), date, pair_compare);
-		// std::cout << it->first << " | " << it->second << " | " << date << std::endl;
 		if (it != database.begin() && it->first != date)
 			--it;
 		std::cout << set[0] << " => " << set[1] << " = " << (it->second * atof(set[1])) << std::endl;
