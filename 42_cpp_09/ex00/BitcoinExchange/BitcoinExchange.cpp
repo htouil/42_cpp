@@ -6,7 +6,7 @@
 /*   By: htouil <htouil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 15:57:40 by htouil            #+#    #+#             */
-/*   Updated: 2024/07/15 21:55:52 by htouil           ###   ########.fr       */
+/*   Updated: 2024/07/16 20:34:45 by htouil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,21 +67,13 @@ char	**split_elements(std::string line, char delim)
 	res[0] = NULL;
 	res[1] = NULL;
 	pos = line.find(delim);
-	if (pos != std::string::npos)
-	{
-		res[0] = new char [pos + 1];
-		std::strncpy(res[0], line.c_str(), pos);
-		res[0][pos] = '\0';
-		rest = line.length() - pos - 1;
-		res[1] = new char [rest + 1];
-		std::strncpy(res[1], line.c_str() + pos + 1, rest);
-		res[1][rest] = '\0';
-	}
-	else
-	{
-		res[0] = new char [line.length() + 1];
-		std::strcpy(res[0], line.c_str());
-	}
+	res[0] = new char [pos + 1];
+	std::strncpy(res[0], line.c_str(), pos);
+	res[0][pos] = '\0';
+	rest = line.length() - pos - 1;
+	res[1] = new char [rest + 1];
+	std::strncpy(res[1], line.c_str() + pos + 1, rest);
+	res[1][rest] = '\0';
 	res[0] = trim_str(&res[0]);
 	res[1] = trim_str(&res[1]);
 	return (res);
@@ -127,7 +119,7 @@ int	parse_date(char **set)
 		return (1);
 	else
 	{
-		if (year == 2022 && month == 3 && day > 29)
+		if (year == 2022 && month == 3 && day > 31)
 			return (1);
 		if (year == 2009 && month == 1 && day < 2)
 			return (1);
@@ -162,11 +154,12 @@ int	parse_elements(char **set, std::string line)
 {
 	double	x;
 
-	if (!set[0] || !set[1])
+	if (std::strlen(set[0]) == 0 || std::strlen(set[1]) == 0)
 	{
 		std::cout << "Error: bad input => " << line << RESET << std::endl;
 		return (1);
 	}
+	
 	x = atof(set[1]);
 	if (x > 1000)
 	{
@@ -186,6 +179,28 @@ int	parse_elements(char **set, std::string line)
 	return (0);
 }
 
+int		count_fractional_digits(double res)
+{
+	int			n;
+	int			i;
+	char		*value;
+	char		buffer[20];
+
+	std::sprintf(buffer, "%f", res);
+	value = new char[std::strlen(buffer) + 1];
+	std::strcpy(value, buffer);
+	n = 0;
+	i = 0;
+	while (value[i] != '.')
+		i++;
+	while (value[++i] != '0')
+	{
+		n++;
+	}
+	delete[] value;
+	return (n);
+}
+
 bool	pair_compare(const std::pair<std::string, double> &pair,const std::string &date)
 {
 	return (pair.first < date);
@@ -195,17 +210,30 @@ void	display_elements(char **set, vector database)
 {
 	std::vector<std::pair<std::string, double> >::iterator	it;
 	std::string												date(set[0]);
+	int														n;
+	double													res;
 
-	it = std::lower_bound(database.begin(), database.end(), date, pair_compare);
-	if (it != database.begin() && it->first != date)
-		--it;
-	std::cout << set[0] << " => " << set[1] << " = " << (it->second * atof(set[1])) << std::endl;
+	if (date == "2022-03-30" || date == "2022-03-31")
+	{
+		it = database.end();
+		it--;
+	}
+	else
+	{
+		it = std::lower_bound(database.begin(), database.end(), date, pair_compare);
+		if (it != database.begin() && it->first != date)
+			--it;
+	}
+	res = it->second * atof(set[1]);
+	n = count_fractional_digits(res);
+	std::cout << set[0] << " => " << set[1] << " = " << std::fixed << std::setprecision(n) << res << std::endl;
 }
 
 void	parse_display_input(std::ifstream &inputfile, vector databse)
 {
 	std::string	line;
 	char		**set;
+	char		**title;
 
 	std::getline(inputfile, line);
 	if (line.empty() || is_empty_string(line) == 1)
@@ -213,11 +241,14 @@ void	parse_display_input(std::ifstream &inputfile, vector databse)
 		std::cerr << RED << "The input file is empty!" << RESET << std::endl;
 		exit(1);
 	}
-	if (line != "date | value")
+	title = split_elements(line, '|');
+	if (strcmp(title[0], "date") || strcmp(title[1], "value"))
 	{
+		delete_arr(title);
 		std::cerr << RED << "Wrong file content!" << RESET << std::endl;
 		exit(1);
 	}
+	delete_arr(title);
 	while (std::getline(inputfile, line))
 	{
 		if (is_empty_string(line) == 1)
