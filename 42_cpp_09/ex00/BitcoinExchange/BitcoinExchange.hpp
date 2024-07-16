@@ -6,17 +6,17 @@
 /*   By: htouil <htouil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 15:57:42 by htouil            #+#    #+#             */
-/*   Updated: 2024/07/16 19:46:17 by htouil           ###   ########.fr       */
+/*   Updated: 2024/07/16 21:32:13 by htouil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BITCOINEXCHANGE_HPP
 # define BITCOINEXCHANGE_HPP
 
+# include <iostream>
 # include <vector>
 # include <utility>
 # include <algorithm>
-# include <iostream>
 # include <fstream>
 # include <cstring>
 # include <cstdlib>

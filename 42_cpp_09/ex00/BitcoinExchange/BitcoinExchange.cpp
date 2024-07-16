@@ -6,7 +6,7 @@
 /*   By: htouil <htouil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 15:57:40 by htouil            #+#    #+#             */
-/*   Updated: 2024/07/16 20:34:45 by htouil           ###   ########.fr       */
+/*   Updated: 2024/07/16 21:33:47 by htouil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -208,10 +208,10 @@ bool	pair_compare(const std::pair<std::string, double> &pair,const std::string &
 
 void	display_elements(char **set, vector database)
 {
-	std::vector<std::pair<std::string, double> >::iterator	it;
-	std::string												date(set[0]);
-	int														n;
-	double													res;
+	vector::iterator	it;
+	std::string			date(set[0]);
+	int					n;
+	double				res;
 
 	if (date == "2022-03-30" || date == "2022-03-31")
 	{
