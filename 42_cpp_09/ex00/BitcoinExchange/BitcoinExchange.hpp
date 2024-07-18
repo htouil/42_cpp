@@ -6,7 +6,7 @@
 /*   By: htouil <htouil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 15:57:42 by htouil            #+#    #+#             */
-/*   Updated: 2024/07/18 00:48:17 by htouil           ###   ########.fr       */
+/*   Updated: 2024/07/18 00:50:57 by htouil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define BITCOINEXCHANGE_HPP
 
 # include <iostream>
-# include <vector>
+# include <list>
 # include <utility>
 # include <algorithm>
 # include <fstream>
@@ -50,9 +50,9 @@
 # define TURQUOISE   "\033[38;5;45m"
 # define INDIGO      "\033[38;5;54m"
 
-typedef std::vector<std::pair<std::string, double> >	vector; 
+typedef std::list<std::pair<std::string, double> >	list; 
 
-vector		getDataBase();
-void		parse_display_input(std::ifstream &inputfile, vector database);
+list		getDataBase();
+void		parse_display_input(std::ifstream &inputfile, list database);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: htouil <htouil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 15:57:40 by htouil            #+#    #+#             */
-/*   Updated: 2024/07/16 21:33:47 by htouil           ###   ########.fr       */
+/*   Updated: 2024/07/18 00:53:33 by htouil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,9 +79,9 @@ char	**split_elements(std::string line, char delim)
 	return (res);
 }
 
-vector	getDataBase()
+list	getDataBase()
 {
-	vector			tmpbase;
+	list			tmpbase;
 	std::string		line;
 	char			**set;
 	double			x;
@@ -206,9 +206,9 @@ bool	pair_compare(const std::pair<std::string, double> &pair,const std::string &
 	return (pair.first < date);
 }
 
-void	display_elements(char **set, vector database)
+void	display_elements(char **set, list database)
 {
-	vector::iterator	it;
+	list::iterator	it;
 	std::string			date(set[0]);
 	int					n;
 	double				res;
@@ -229,7 +229,7 @@ void	display_elements(char **set, vector database)
 	std::cout << set[0] << " => " << set[1] << " = " << std::fixed << std::setprecision(n) << res << std::endl;
 }
 
-void	parse_display_input(std::ifstream &inputfile, vector databse)
+void	parse_display_input(std::ifstream &inputfile, list databse)
 {
 	std::string	line;
 	char		**set;
