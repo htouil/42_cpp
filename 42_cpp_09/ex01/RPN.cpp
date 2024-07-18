@@ -6,7 +6,7 @@
 /*   By: htouil <htouil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 19:59:47 by htouil            #+#    #+#             */
-/*   Updated: 2024/07/18 02:50:21 by htouil           ###   ########.fr       */
+/*   Updated: 2024/07/18 21:56:53 by htouil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ bool	isoperation(char c)
 int	parse_expression(vector vec)
 {
 	vector::iterator	it;
+	int					i,j;
 
 	if (*(vec.begin()) == ' ' || *(--vec.end()) == ' ')
 		return (1);
@@ -44,6 +45,8 @@ int	parse_expression(vector vec)
 		if (!isoperation(*it) && !isdigit(*it) && *it != ' ')
 			return (1);
 	}
+	i = 0;
+	j = 0;
 	for (it = vec.begin(); it != (--vec.end()); it++)
 	{
 		if (*it == ' ' && (*(it - 1) == ' ' || *(it + 1) == ' '))
@@ -54,6 +57,15 @@ int	parse_expression(vector vec)
 				return (1);
 		}
 	}
+	for (it = vec.begin(); it != vec.end(); it++)
+	{
+		if (isdigit(*it))
+			i++;
+		if (isoperation(*it))
+			j++;
+	}
+	if (j != i - 1)
+		return (1);
 	// std::cout << "size : " << vec.size() << std::endl;
 	// int	i, j;
 	// i = std::count(vec.begin(), vec.end(), ' ');
