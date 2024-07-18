@@ -6,13 +6,13 @@
 #    By: htouil <htouil@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/15 19:24:08 by htouil            #+#    #+#              #
-#    Updated: 2024/07/15 20:02:16 by htouil           ###   ########.fr        #
+#    Updated: 2024/07/18 01:40:50 by htouil           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= RPN
 
-SRCS	= main.cpp RPN/RPN.cpp
+SRCS	= main.cpp RPN.cpp
 
 OBJS	= ${SRCS:.cpp=.o}
 

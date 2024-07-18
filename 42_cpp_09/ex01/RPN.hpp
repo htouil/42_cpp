@@ -6,7 +6,7 @@
 /*   By: htouil <htouil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 20:01:09 by htouil            #+#    #+#             */
-/*   Updated: 2024/07/17 21:53:01 by htouil           ###   ########.fr       */
+/*   Updated: 2024/07/18 02:19:04 by htouil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 # define RPN_HPP
 
 # include <iostream>
-# include <array>
-# include <list>
-# include <deque>
 # include <vector>
+# include <algorithm>
+# include <cstdlib>
+# include <cctype>
 
 # define RESET       "\033[0m"
 # define RED         "\033[31m"
@@ -44,6 +44,9 @@
 # define TURQUOISE   "\033[38;5;45m"
 # define INDIGO      "\033[38;5;54m"
 
+typedef std::vector<char>	vector;
 
+vector	get_experssion(char *exp);
+void	parse_calculate_expression(vector vec);
 
 #endif
