@@ -6,7 +6,7 @@
 /*   By: htouil <htouil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 19:59:47 by htouil            #+#    #+#             */
-/*   Updated: 2024/07/19 20:09:40 by htouil           ###   ########.fr       */
+/*   Updated: 2024/07/19 20:54:07 by htouil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,17 @@
 stack	get_experssion(char *exp)
 {
 	int		i;
+	char	c[2];
 	stack	tmp;
 
 	for (i = strlen(exp) - 1; i >= 0; i--)
 	{
 		if (exp[i] != ' ')
-			tmp.push(exp[i]);
+		{
+			c[0] = exp[i];
+			c[1] = '\0';
+			tmp.push(c);
+		}
 	}
 	return (tmp);
 }
@@ -31,7 +36,7 @@ void	print_stack(stack stk)
 
 	while(!stk.empty())
 	{
-		std::cout << stk.top() << ' ';
+		std::cout << stk.top()[0] << ' ';
 		tmp.push(stk.top());
 		stk.pop();
 	}
@@ -109,12 +114,12 @@ void	calculate_expression(stack &stk1)
 
 	while (stk1.size() == 1)
 	{
-		if (isdigit(stk1.top()))
+		if (isdigit(stk1.top()[0]))
 		{
 			stk2.push(stk1.top());
 			stk1.pop();
 		}
-		else if (isoperator(stk1.top()))
+		else if (isoperator(stk1.top()[0]))
 		{
 			
 		}
