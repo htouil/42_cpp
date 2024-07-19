@@ -6,7 +6,7 @@
 /*   By: htouil <htouil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 20:01:09 by htouil            #+#    #+#             */
-/*   Updated: 2024/07/18 02:19:04 by htouil           ###   ########.fr       */
+/*   Updated: 2024/07/19 19:29:30 by htouil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define RPN_HPP
 
 # include <iostream>
-# include <vector>
+# include <stack>
 # include <algorithm>
 # include <cstdlib>
 # include <cctype>
@@ -44,9 +44,9 @@
 # define TURQUOISE   "\033[38;5;45m"
 # define INDIGO      "\033[38;5;54m"
 
-typedef std::vector<char>	vector;
+typedef std::stack<char>	stack;
 
-vector	get_experssion(char *exp);
-void	parse_calculate_expression(vector vec);
+stack	get_experssion(char *exp);
+void	parse_calculate_expression(char *exp);
 
 #endif
