@@ -6,7 +6,7 @@
 /*   By: htouil <htouil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 19:59:47 by htouil            #+#    #+#             */
-/*   Updated: 2024/07/20 02:38:47 by htouil           ###   ########.fr       */
+/*   Updated: 2024/07/20 21:53:58 by htouil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,13 @@ stack	get_experssion(char *exp)
 	{
 		if (!isspace(exp[i]))
 		{
-			c = &exp[i];
+			// c = &exp[i];
+			// c[1] = '\0';
+			c = new char[2];
+			c[0] = exp[i];
 			c[1] = '\0';
 			tmp.push(c);
+			delete[] c;
 		}
 	}
 	return (tmp);
@@ -34,7 +38,7 @@ void	print_stack(stack stk)
 {
 	while(!stk.empty())
 	{
-		std::cout << *stk.top() << " ";
+		std::cout << stk.top() << " ";
 		stk.pop();
 	}
 	std::cout << std::endl;
@@ -84,6 +88,7 @@ double	calculate_res(double n1, double n2, char *op)
 {
 	double res;
 
+	res = 0;
 	if (op[0] == '+')
 		res = n1 + n2;
 	else if (op[0] == '-')
@@ -98,25 +103,26 @@ double	calculate_res(double n1, double n2, char *op)
 void	calculate_expression(stack &stk1)
 {
 	stack	stk2;
+	char	buffer[50];
 	char	*op;
 	double	n1, n2;
 	double	res;
-	char	*buffer;
 
 	while (stk1.size() != 1)
 	{
-		std::cout << "stk1 : ";
-		print_stack(stk1);
-		std::cout << "stk2 : ";
-		print_stack(stk2);
+		// std::cout << "stk1 : ";
+		// print_stack(stk1);
+		// std::cout << "stk2 : ";
+		// print_stack(stk2);
 		if (isdigit(stk1.top()[0]))
 		{
 			stk2.push(stk1.top());
 			stk1.pop();
 		}
-		else if (isoperator(stk1.top()[0]))
+		if (isoperator(stk1.top()[0]))
 		{
-			//smtg wrong here
+			op = NULL;
+			res = 0;
 			n2 = atof(stk2.top());
 			stk2.pop();
 			n1 = atof(stk2.top());
@@ -125,14 +131,11 @@ void	calculate_expression(stack &stk1)
 			stk1.pop();
 			res = calculate_res(n1, n2, op);
 			sprintf(buffer, "%.2f", res);
+			std::cout << "SALAM" << std::endl;
 			stk2.push(buffer);
-			// std::cout << "n1 : " << n1 << " | n2 : " << n2 << std::endl;
-			// std::cout << n1 << " " << op << " " << n2 << " = " << res << std::endl;
-			// std::cout << "buffer : " << buffer << std::endl;
-			// std::cout << "top after calcul : " << stk2.top() << std::endl << std::endl << std::endl;
 		}
 	}
-	std::cout << std::endl;
+	std::cout << stk2.top() << std::endl;
 }
 
 void	parse_calculate_expression(char *exp)
