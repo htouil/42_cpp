@@ -6,7 +6,7 @@
 /*   By: htouil <htouil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 19:59:47 by htouil            #+#    #+#             */
-/*   Updated: 2024/07/20 02:31:36 by htouil           ###   ########.fr       */
+/*   Updated: 2024/07/20 02:38:47 by htouil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,9 @@ stack	get_experssion(char *exp)
 
 void	print_stack(stack stk)
 {
-	stack	tmp;
-
 	while(!stk.empty())
 	{
-		std::cout << stk.top() << " ";
-		tmp.push(stk.top());
+		std::cout << *stk.top() << " ";
 		stk.pop();
 	}
 	std::cout << std::endl;
@@ -135,6 +132,7 @@ void	calculate_expression(stack &stk1)
 			// std::cout << "top after calcul : " << stk2.top() << std::endl << std::endl << std::endl;
 		}
 	}
+	std::cout << std::endl;
 }
 
 void	parse_calculate_expression(char *exp)
