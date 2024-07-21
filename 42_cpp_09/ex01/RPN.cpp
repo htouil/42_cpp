@@ -6,11 +6,25 @@
 /*   By: htouil <htouil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 19:59:47 by htouil            #+#    #+#             */
-/*   Updated: 2024/07/20 21:53:58 by htouil           ###   ########.fr       */
+/*   Updated: 2024/07/21 02:18:52 by htouil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RPN.hpp"
+
+void	clean_stacks(stack &stk1, stack &stk2)
+{
+	while (!stk1.empty())
+	{
+		delete[] stk1.top();
+		stk1.pop();
+	}
+	while (!stk2.empty())
+	{
+		delete[] stk2.top();
+		stk2.pop();
+	}
+}
 
 stack	get_experssion(char *exp)
 {
@@ -22,13 +36,10 @@ stack	get_experssion(char *exp)
 	{
 		if (!isspace(exp[i]))
 		{
-			// c = &exp[i];
-			// c[1] = '\0';
 			c = new char[2];
 			c[0] = exp[i];
 			c[1] = '\0';
 			tmp.push(c);
-			delete[] c;
 		}
 	}
 	return (tmp);
@@ -84,7 +95,7 @@ int	parse_expression(char *exp)
 	return (0);
 }
 
-double	calculate_res(double n1, double n2, char *op)
+double	calculate_res(double n1, double n2, char *&op, stack &stk1, stack &stk2)
 {
 	double res;
 
@@ -96,7 +107,18 @@ double	calculate_res(double n1, double n2, char *op)
 	else if (op[0] == '*')
 		res = n1 * n2;
 	else if (op[0] == '/')
+	{
+		if (n2 == 0)
+		{
+			std::cerr << RED << "dision by 0 is impossible" << RESET << std::endl;
+			clean_stacks(stk1, stk2);
+			// delete[] op;
+			//figure out leaks here
+			std::cout << "SALAM" << std::endl;
+			exit(1);
+		}
 		res = n1 / n2;
+	}
 	return (res);
 }
 
@@ -104,16 +126,13 @@ void	calculate_expression(stack &stk1)
 {
 	stack	stk2;
 	char	buffer[50];
+	char	*tmp;
 	char	*op;
 	double	n1, n2;
 	double	res;
 
-	while (stk1.size() != 1)
+	while (!stk1.empty())
 	{
-		// std::cout << "stk1 : ";
-		// print_stack(stk1);
-		// std::cout << "stk2 : ";
-		// print_stack(stk2);
 		if (isdigit(stk1.top()[0]))
 		{
 			stk2.push(stk1.top());
@@ -121,21 +140,31 @@ void	calculate_expression(stack &stk1)
 		}
 		if (isoperator(stk1.top()[0]))
 		{
-			op = NULL;
 			res = 0;
 			n2 = atof(stk2.top());
+			delete[] stk2.top();
 			stk2.pop();
 			n1 = atof(stk2.top());
+			delete[] stk2.top();
 			stk2.pop();
-			op = stk1.top();
+			op = new char[2];
+			std::strcpy(op, stk1.top());
+			delete[] stk1.top();
 			stk1.pop();
-			res = calculate_res(n1, n2, op);
+			res = calculate_res(n1, n2, op, stk1, stk2);
+			delete[] op;
 			sprintf(buffer, "%.2f", res);
-			std::cout << "SALAM" << std::endl;
-			stk2.push(buffer);
+			tmp = new char[strlen(buffer) + 1];
+			std::strcpy(tmp, buffer);
+			stk2.push(tmp);
 		}
 	}
-	std::cout << stk2.top() << std::endl;
+	if (!stk2.empty())
+	{
+		std::cout << stk2.top() << std::endl;
+		delete[] stk2.top();
+		stk2.pop();
+	}
 }
 
 void	parse_calculate_expression(char *exp)
