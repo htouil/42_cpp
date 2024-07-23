@@ -5,12 +5,12 @@
 #                                                     +:+ +:+         +:+      #
 #    By: htouil <htouil@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/07/15 19:24:08 by htouil            #+#    #+#              #
-#    Updated: 2024/07/23 21:23:51 by htouil           ###   ########.fr        #
+#    Created: 2024/07/23 21:22:00 by htouil            #+#    #+#              #
+#    Updated: 2024/07/23 21:24:10 by htouil           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	= RPN
+NAME	= PmergeMe
 
 SRCS	= main.cpp srcs/RPN.cpp
 
