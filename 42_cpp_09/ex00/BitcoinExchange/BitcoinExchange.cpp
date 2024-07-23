@@ -6,7 +6,7 @@
 /*   By: htouil <htouil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 15:57:40 by htouil            #+#    #+#             */
-/*   Updated: 2024/07/18 00:53:33 by htouil           ###   ########.fr       */
+/*   Updated: 2024/07/23 16:34:17 by htouil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -194,9 +194,7 @@ int		count_fractional_digits(double res)
 	while (value[i] != '.')
 		i++;
 	while (value[++i] != '0')
-	{
 		n++;
-	}
 	delete[] value;
 	return (n);
 }

@@ -6,7 +6,7 @@
 /*   By: htouil <htouil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 19:59:47 by htouil            #+#    #+#             */
-/*   Updated: 2024/07/21 02:18:52 by htouil           ###   ########.fr       */
+/*   Updated: 2024/07/23 16:51:01 by htouil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,31 +95,48 @@ int	parse_expression(char *exp)
 	return (0);
 }
 
-double	calculate_res(double n1, double n2, char *&op, stack &stk1, stack &stk2)
+double	calculate_res(double n1, double n2, char **op, stack &stk1, stack &stk2)
 {
 	double res;
 
 	res = 0;
-	if (op[0] == '+')
+	if (*op[0] == '+')
 		res = n1 + n2;
-	else if (op[0] == '-')
+	else if (*op[0] == '-')
 		res = n1 - n2;
-	else if (op[0] == '*')
+	else if (*op[0] == '*')
 		res = n1 * n2;
-	else if (op[0] == '/')
+	else if (*op[0] == '/')
 	{
 		if (n2 == 0)
 		{
 			std::cerr << RED << "dision by 0 is impossible" << RESET << std::endl;
 			clean_stacks(stk1, stk2);
-			// delete[] op;
-			//figure out leaks here
-			std::cout << "SALAM" << std::endl;
+			delete[] *op;
 			exit(1);
 		}
 		res = n1 / n2;
 	}
 	return (res);
+}
+
+int		count_fractional_digits(char *value)
+{
+	int			n;
+	int			i;
+
+	n = 0;
+	i = 0;
+	while (value[i] != '.')
+		i++;
+	if (value[i] == '.')
+	{
+		while (value[i] && value[++i] != '0')
+			n++;
+		if (n > 2)
+			return (2);
+	}
+	return (n);
 }
 
 void	calculate_expression(stack &stk1)
@@ -130,6 +147,7 @@ void	calculate_expression(stack &stk1)
 	char	*op;
 	double	n1, n2;
 	double	res;
+	int		n;
 
 	while (!stk1.empty())
 	{
@@ -151,9 +169,9 @@ void	calculate_expression(stack &stk1)
 			std::strcpy(op, stk1.top());
 			delete[] stk1.top();
 			stk1.pop();
-			res = calculate_res(n1, n2, op, stk1, stk2);
+			res = calculate_res(n1, n2, &op, stk1, stk2);
 			delete[] op;
-			sprintf(buffer, "%.2f", res);
+			sprintf(buffer, "%f", res);
 			tmp = new char[strlen(buffer) + 1];
 			std::strcpy(tmp, buffer);
 			stk2.push(tmp);
@@ -161,7 +179,8 @@ void	calculate_expression(stack &stk1)
 	}
 	if (!stk2.empty())
 	{
-		std::cout << stk2.top() << std::endl;
+		n = count_fractional_digits(stk2.top());
+		std::cout << std::fixed << std::setprecision(n) << atof(stk2.top()) << std::endl;
 		delete[] stk2.top();
 		stk2.pop();
 	}
