@@ -6,7 +6,7 @@
 /*   By: htouil <htouil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 19:59:47 by htouil            #+#    #+#             */
-/*   Updated: 2024/07/23 21:20:46 by htouil           ###   ########.fr       */
+/*   Updated: 2024/07/27 20:55:03 by htouil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ double	calculate_res(double n1, double n2, char **op, stack &stk1, stack &stk2)
 	{
 		if (n2 == 0)
 		{
-			std::cerr << RED << "dision by 0 is impossible" << RESET << std::endl;
+			std::cerr << RED << "Error" << std::endl << "dision by 0 is impossible" << RESET << std::endl;
 			clean_stacks(stk1, stk2);
 			delete[] *op;
 			exit(1);
@@ -192,7 +192,7 @@ void	parse_calculate_expression(char *exp)
 
 	if (parse_expression(exp) == 1)
 	{
-		std::cerr << RED << "bad expression" << RESET << std::endl;;
+		std::cerr << RED << "Error" << std::endl << "bad expression" << RESET << std::endl;;
 		exit(1);
 	}
 	stk = get_experssion(exp);
