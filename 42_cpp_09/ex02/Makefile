@@ -6,13 +6,13 @@
 #    By: htouil <htouil@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/23 21:22:00 by htouil            #+#    #+#              #
-#    Updated: 2024/07/23 21:24:10 by htouil           ###   ########.fr        #
+#    Updated: 2024/07/28 19:19:38 by htouil           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= PmergeMe
 
-SRCS	= main.cpp srcs/RPN.cpp
+SRCS	= main.cpp srcs/PmergeMe.cpp
 
 OBJS	= ${SRCS:.cpp=.o}
 

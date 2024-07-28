@@ -6,7 +6,7 @@
 /*   By: htouil <htouil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 21:23:28 by htouil            #+#    #+#             */
-/*   Updated: 2024/07/27 20:56:38 by htouil           ###   ########.fr       */
+/*   Updated: 2024/07/28 19:14:32 by htouil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,9 @@
 # include <iostream>
 # include <vector>
 # include <deque>
+# include <cstdlib>
+# include <cerrno>
+# include <climits>
 
 # define RESET       "\033[0m"
 # define RED         "\033[31m"
@@ -42,6 +45,9 @@
 # define TURQUOISE   "\033[38;5;45m"
 # define INDIGO      "\033[38;5;54m"
 
-std::deque<int>	get_numbers(char **av);
+typedef std::deque<int>	deque;
+
+void	parse_input(char **av);
+deque	get_numbers(char **av);
 
 #endif
