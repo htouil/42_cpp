@@ -6,7 +6,7 @@
 /*   By: htouil <htouil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 21:23:18 by htouil            #+#    #+#             */
-/*   Updated: 2024/08/01 05:12:07 by htouil           ###   ########.fr       */
+/*   Updated: 2024/08/01 21:55:52 by htouil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,40 @@ void	get_numbers(char **av, deque &dq, vector &vec)
 	}
 }
 
+// template<typename T>
+// void	arrange_numbers(T &container, int i, int grps)
+// {
+// 	if (i <= grps)
+// 	{
+		
+// 	}
+// }
+
 template<typename T>
 void	sort_numbers(T &container)
 {
-	
+	T	tmp1, tmp2, tmp3;
+	int	grps;
+	int	i;
+	int	n1, n2;
+
+	grps = container.size() / 2;
+	i = 1;
+	while (i <= grps)
+	{
+		n1 = (2 * i) - 2;
+		n2 = (2 * i) - 1;
+		if (container[n1] > container[n2])
+			std::swap(container[n1], container[n2]);
+		tmp1.push_back(container[n1]);
+		tmp2.push_bck(container[n2]);
+		i++;
+	}
+	std::sort(tmp1.begin(), tmp1.end());
+	std::sort(tmp2.begin(), tmp2.end());
+	tmp3 = std::merge();
+	i = 0;
+	// arrange_numbers(container, i + 1, grps);
 }
 
 void	sort_n_display(deque &dq, vector &vec)
