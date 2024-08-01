@@ -6,7 +6,7 @@
 /*   By: htouil <htouil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 21:23:18 by htouil            #+#    #+#             */
-/*   Updated: 2024/07/28 19:36:58 by htouil           ###   ########.fr       */
+/*   Updated: 2024/08/01 05:12:07 by htouil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,16 +35,43 @@ void	parse_input(char **av)
 	}
 }
 
-deque	get_numbers(char **av)
+void	get_numbers(char **av, deque &dq, vector &vec)
 {
 	int		i;
-	deque	tmp;
 
 	i = 1;
 	while(av[i])
 	{
-		tmp.push_back(std::atoi(av[i]));
+		dq.push_back(std::atoi(av[i]));
+		vec.push_back(std::atoi(av[i]));
 		i++;
 	}
-	return (tmp);
+}
+
+template<typename T>
+void	sort_numbers(T &container)
+{
+	
+}
+
+void	sort_n_display(deque &dq, vector &vec)
+{
+	unsigned int	i;
+
+	i = -1;
+	std::cout << GREEN << "before:  " << RESET;
+	while (++i < dq.size())
+		std::cout << dq[i] << " ";
+	std::cout << std::endl;
+	//start time
+	sort_numbers(dq);
+	//end time
+	//display time
+	//start time
+	sort_numbers(vec);
+	i = -1;
+	std::cout << BLUE << "after:   " << RESET;
+	while (++i < dq.size())
+		std::cout << dq[i] << " ";
+	std::cout << std::endl;
 }

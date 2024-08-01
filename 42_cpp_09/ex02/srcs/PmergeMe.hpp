@@ -6,7 +6,7 @@
 /*   By: htouil <htouil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 21:23:28 by htouil            #+#    #+#             */
-/*   Updated: 2024/07/28 19:14:32 by htouil           ###   ########.fr       */
+/*   Updated: 2024/08/01 02:48:45 by htouil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,12 @@
 # define TURQUOISE   "\033[38;5;45m"
 # define INDIGO      "\033[38;5;54m"
 
-typedef std::deque<int>	deque;
+typedef std::deque<int>		deque;
+typedef	std::vector<int>	vector;
 
 void	parse_input(char **av);
-deque	get_numbers(char **av);
+void	get_numbers(char **av, deque &dq, vector &vec);
+void	sort_n_display(deque &dq, vector &vec);
+void	sort_numbers(deque &dq, vector &vec);
 
 #endif
