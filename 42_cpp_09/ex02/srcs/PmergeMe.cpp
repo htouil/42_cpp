@@ -6,7 +6,7 @@
 /*   By: htouil <htouil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 21:23:18 by htouil            #+#    #+#             */
-/*   Updated: 2024/08/01 21:55:52 by htouil           ###   ########.fr       */
+/*   Updated: 2024/08/03 20:18:37 by htouil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,14 +48,28 @@ void	get_numbers(char **av, deque &dq, vector &vec)
 	}
 }
 
-// template<typename T>
-// void	arrange_numbers(T &container, int i, int grps)
-// {
-// 	if (i <= grps)
-// 	{
-		
-// 	}
-// }
+template<typename T>
+void	arrange_numbers(T &container1, T &container2)
+{
+	typename T::iterator it;
+
+	std::cout << "SALAM" << std::endl;
+	std::cout << "tmp1:  " << RESET;
+	for (it = container1.begin(); it != container1.end(); it++)
+		std::cout << *it << " ";
+	std::cout << std::endl;
+	std::cout << "tmp2:  " << RESET;
+	for (it = container2.begin(); it != container2.end(); it++)
+		std::cout << *it << " ";
+	std::cout << std::endl;
+	if (container2.size() > 0)
+	{
+		it = std::lower_bound(container1.begin(), container1.end(), container2[0]);
+		container1.insert(it, container2[0]);
+		container2.erase(container2.begin());
+		arrange_numbers(container1, container2);
+	}
+}
 
 template<typename T>
 void	sort_numbers(T &container)
@@ -74,19 +88,34 @@ void	sort_numbers(T &container)
 		if (container[n1] > container[n2])
 			std::swap(container[n1], container[n2]);
 		tmp1.push_back(container[n1]);
-		tmp2.push_bck(container[n2]);
+		tmp2.push_back(container[n2]);
 		i++;
 	}
 	std::sort(tmp1.begin(), tmp1.end());
 	std::sort(tmp2.begin(), tmp2.end());
-	tmp3 = std::merge();
-	i = 0;
-	// arrange_numbers(container, i + 1, grps);
+	arrange_numbers(tmp1, tmp2);
+	// typename T::iterator it;
+	
+	// std::cout << GREEN << "tmp1:  " << RESET;
+	// for (it = tmp1.begin(); it != tmp1.end(); it++)
+	// 	std::cout << *it << " ";
+	// std::cout << std::endl;
+	// std::cout << GREEN << "tmp2:  " << RESET;
+	// for (it = tmp2.begin(); it != tmp2.end(); it++)
+	// 	std::cout << *it << " ";
+	// std::cout << std::endl;
+	// tmp3.resize(tmp1.size() + tmp2.size());
+	// std::merge(tmp1.begin(), tmp1.end(), tmp2.begin(), tmp2.end(), tmp3.begin());
+	// std::cout << GREEN << "tmp3:  " << RESET;
+	// for (it = tmp3.begin(); it != tmp3.end(); it++)
+	// 	std::cout << *it << " ";
+	// std::cout << std::endl;
 }
 
 void	sort_n_display(deque &dq, vector &vec)
 {
 	unsigned int	i;
+	(void)vec;
 
 	i = -1;
 	std::cout << GREEN << "before:  " << RESET;
@@ -98,7 +127,7 @@ void	sort_n_display(deque &dq, vector &vec)
 	//end time
 	//display time
 	//start time
-	sort_numbers(vec);
+	// sort_numbers(vec);
 	i = -1;
 	std::cout << BLUE << "after:   " << RESET;
 	while (++i < dq.size())
