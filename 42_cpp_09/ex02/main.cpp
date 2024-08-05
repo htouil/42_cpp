@@ -6,7 +6,7 @@
 /*   By: htouil <htouil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 21:22:07 by htouil            #+#    #+#             */
-/*   Updated: 2024/08/03 19:23:57 by htouil           ###   ########.fr       */
+/*   Updated: 2024/08/05 09:51:46 by htouil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,11 @@ int	main(int ac, char **av)
 	}
 	parse_input(av);
 	get_numbers(av, dq, vec);
+	if (std::is_sorted(vec.begin(), vec.end()))
+	{
+		std::cout << "The sequence is already sorted" << std::endl;
+		return (0);
+	}
 	sort_n_display(dq, vec);
 	// unsigned int	i;
 	// i = -1;

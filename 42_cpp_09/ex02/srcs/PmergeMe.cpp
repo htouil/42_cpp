@@ -6,11 +6,18 @@
 /*   By: htouil <htouil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 21:23:18 by htouil            #+#    #+#             */
-/*   Updated: 2024/08/03 20:18:37 by htouil           ###   ########.fr       */
+/*   Updated: 2024/08/05 09:56:10 by htouil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
+
+template<typename T>
+void	empty_container(T &container)
+{
+	while (!container.empty())
+		container.pop_back();
+}
 
 void	parse_input(char **av)
 {
@@ -94,22 +101,9 @@ void	sort_numbers(T &container)
 	std::sort(tmp1.begin(), tmp1.end());
 	std::sort(tmp2.begin(), tmp2.end());
 	arrange_numbers(tmp1, tmp2);
-	// typename T::iterator it;
-	
-	// std::cout << GREEN << "tmp1:  " << RESET;
-	// for (it = tmp1.begin(); it != tmp1.end(); it++)
-	// 	std::cout << *it << " ";
-	// std::cout << std::endl;
-	// std::cout << GREEN << "tmp2:  " << RESET;
-	// for (it = tmp2.begin(); it != tmp2.end(); it++)
-	// 	std::cout << *it << " ";
-	// std::cout << std::endl;
-	// tmp3.resize(tmp1.size() + tmp2.size());
-	// std::merge(tmp1.begin(), tmp1.end(), tmp2.begin(), tmp2.end(), tmp3.begin());
-	// std::cout << GREEN << "tmp3:  " << RESET;
-	// for (it = tmp3.begin(); it != tmp3.end(); it++)
-	// 	std::cout << *it << " ";
-	// std::cout << std::endl;
+	empty_container(container);
+	container.resize(tmp1.size());
+	std::copy(tmp1.begin(), tmp1.end(), container.begin());
 }
 
 void	sort_n_display(deque &dq, vector &vec)
