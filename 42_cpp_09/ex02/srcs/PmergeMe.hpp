@@ -6,7 +6,7 @@
 /*   By: htouil <htouil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 21:23:28 by htouil            #+#    #+#             */
-/*   Updated: 2024/08/03 19:19:10 by htouil           ###   ########.fr       */
+/*   Updated: 2024/08/06 03:49:00 by htouil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,13 @@
 # define PMERGEME_HPP
 
 # include <iostream>
+# include <algorithm>
 # include <vector>
 # include <deque>
 # include <cstdlib>
 # include <cerrno>
 # include <climits>
+# include <ctime>
 
 # define RESET       "\033[0m"
 # define RED         "\033[31m"
@@ -48,9 +50,10 @@
 typedef std::deque<int>		deque;
 typedef	std::vector<int>	vector;
 
-void	parse_input(char **av);
+int		parse_input(char **av);
 void	get_numbers(char **av, deque &dq, vector &vec);
 void	sort_n_display(deque &dq, vector &vec);
-void	sort_numbers(deque &dq, vector &vec);
+template<typename T>
+void	sort_numbers(T &container);
 
 #endif

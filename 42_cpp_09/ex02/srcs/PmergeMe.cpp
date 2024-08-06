@@ -6,7 +6,7 @@
 /*   By: htouil <htouil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 21:23:18 by htouil            #+#    #+#             */
-/*   Updated: 2024/08/05 09:56:10 by htouil           ###   ########.fr       */
+/*   Updated: 2024/08/06 03:55:40 by htouil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	empty_container(T &container)
 		container.pop_back();
 }
 
-void	parse_input(char **av)
+int	parse_input(char **av)
 {
 	int			i;
 	long int	lg;
@@ -30,16 +30,14 @@ void	parse_input(char **av)
 	while (av[i])
 	{
 		lg = std::strtol(av[i], &endptr, 10);
-		// std::cout << lg << std::endl;
-		// std::cout << errno << std::endl;
-		// std::cout << *endptr << std::endl;
 		if (errno == ERANGE || lg < 0 || lg > INT_MAX || *endptr != '\0')
 		{
 			std::cerr << RED << "Error" << std::endl << "incorrect input: " << RESET << "\'" << av[i] << "\'" << std::endl;
-			exit(1);
+			return (1);
 		}
 		i++;
 	}
+	return (0);
 }
 
 void	get_numbers(char **av, deque &dq, vector &vec)
@@ -60,15 +58,6 @@ void	arrange_numbers(T &container1, T &container2)
 {
 	typename T::iterator it;
 
-	std::cout << "SALAM" << std::endl;
-	std::cout << "tmp1:  " << RESET;
-	for (it = container1.begin(); it != container1.end(); it++)
-		std::cout << *it << " ";
-	std::cout << std::endl;
-	std::cout << "tmp2:  " << RESET;
-	for (it = container2.begin(); it != container2.end(); it++)
-		std::cout << *it << " ";
-	std::cout << std::endl;
 	if (container2.size() > 0)
 	{
 		it = std::lower_bound(container1.begin(), container1.end(), container2[0]);
@@ -84,8 +73,17 @@ void	sort_numbers(T &container)
 	T	tmp1, tmp2, tmp3;
 	int	grps;
 	int	i;
-	int	n1, n2;
+	int	n1, n2, n3;
+	int	flag;
+	typename T::iterator it;
 
+	flag = 0;
+	if (container.size() % 2 != 0)
+	{
+		flag = 1;
+		n3 = container.back();
+		container.pop_back();
+	}
 	grps = container.size() / 2;
 	i = 1;
 	while (i <= grps)
@@ -104,27 +102,38 @@ void	sort_numbers(T &container)
 	empty_container(container);
 	container.resize(tmp1.size());
 	std::copy(tmp1.begin(), tmp1.end(), container.begin());
+	if (flag == 1)
+	{
+		it = std::lower_bound(container.begin(), container.end(), n3);
+		container.insert(it, n3);
+	}
 }
 
 void	sort_n_display(deque &dq, vector &vec)
 {
 	unsigned int	i;
-	(void)vec;
+	std::clock_t	start1, end1;
+	std::clock_t	start2, end2;
+	double			elapse_time;
 
 	i = -1;
 	std::cout << GREEN << "before:  " << RESET;
 	while (++i < dq.size())
 		std::cout << dq[i] << " ";
 	std::cout << std::endl;
-	//start time
+	start1 = std::clock();
 	sort_numbers(dq);
-	//end time
-	//display time
-	//start time
-	// sort_numbers(vec);
+	end1 = std::clock();
+	start2 = std::clock();
+	sort_numbers(vec);
+	end2 = std::clock();
 	i = -1;
 	std::cout << BLUE << "after:   " << RESET;
 	while (++i < dq.size())
 		std::cout << dq[i] << " ";
 	std::cout << std::endl;
+	elapse_time = (static_cast<double>(end1) - static_cast<double>(start1));
+	std::cout << "Time to process a range of " << dq.size() << " with std::deque : " << elapse_time << " us" << std::endl;
+	elapse_time = (static_cast<double>(end2) - static_cast<double>(start2));
+	std::cout << "Time to process a range of " << dq.size() << " with std::vector : " << elapse_time << " us" << std::endl;
 }

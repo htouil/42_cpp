@@ -6,11 +6,25 @@
 /*   By: htouil <htouil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 21:22:07 by htouil            #+#    #+#             */
-/*   Updated: 2024/08/05 09:51:46 by htouil           ###   ########.fr       */
+/*   Updated: 2024/08/06 03:50:51 by htouil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "srcs/PmergeMe.hpp"
+
+template<typename T>
+bool	is_sorted(T &container)
+{
+	typename T::iterator	it;
+
+	for (it = container.begin(); it != container.end() - 1; it++)
+	{
+		if (*it > *(it + 1))
+			return (false);
+	}
+	return (true);
+}
+
 
 int	main(int ac, char **av)
 {
@@ -21,24 +35,14 @@ int	main(int ac, char **av)
 		std::cerr << RED << "Error" << std::endl << "too few arguments" << RESET << std::endl;
 		return (1);
 	}
-	parse_input(av);
+	if (parse_input(av) == 1)
+		return (1);
 	get_numbers(av, dq, vec);
-	if (std::is_sorted(vec.begin(), vec.end()))
+	if (is_sorted(dq))
 	{
 		std::cout << "The sequence is already sorted" << std::endl;
 		return (0);
 	}
 	sort_n_display(dq, vec);
-	// unsigned int	i;
-	// i = -1;
-	// std::cout << "std::deque: ";
-	// while (++i < dq.size())
-	// 	std::cout << dq[i] << " ";
-	// std::cout << std::endl;
-	// i = -1;
-	// std::cout << "std::vector: ";
-	// while (++i < vec.size())
-	// 	std::cout << vec[i] << " ";
-	// std::cout << std::endl;
 	return (0);
 }
