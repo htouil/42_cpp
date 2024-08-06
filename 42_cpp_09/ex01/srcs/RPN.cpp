@@ -6,7 +6,7 @@
 /*   By: htouil <htouil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 19:59:47 by htouil            #+#    #+#             */
-/*   Updated: 2024/07/27 20:55:03 by htouil           ###   ########.fr       */
+/*   Updated: 2024/08/06 19:29:11 by htouil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,16 +45,6 @@ stack	get_experssion(char *exp)
 	return (tmp);
 }
 
-void	print_stack(stack stk)
-{
-	while(!stk.empty())
-	{
-		std::cout << stk.top() << " ";
-		stk.pop();
-	}
-	std::cout << std::endl;
-}
-
 bool	isoperator(char c)
 {
 	if (c == '+' || c == '-' || c == '*' || c == '/')
@@ -73,12 +63,12 @@ int	parse_expression(char *exp)
 	b = 0;
 	for (i = 0; exp[i] != '\0'; i++)
 	{
+		if (!isdigit(exp[i]) && !isoperator(exp[i]) && exp[i] != ' ')
+			return (1);
 		if (isdigit(exp[i]))
 			a++;
 		if (isoperator(exp[i]))
 			b++;
-		if (!isdigit(exp[i]) && !isoperator(exp[i]) && exp[i] != ' ')
-			return (1);
 	}
 	for (i = 0; i < strlen(exp) - 1; i++)
 	{
@@ -196,6 +186,5 @@ void	parse_calculate_expression(char *exp)
 		exit(1);
 	}
 	stk = get_experssion(exp);
-	// print_stack(stk);
 	calculate_expression(stk);
 }

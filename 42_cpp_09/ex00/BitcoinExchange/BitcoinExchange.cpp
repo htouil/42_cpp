@@ -6,7 +6,7 @@
 /*   By: htouil <htouil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 15:57:40 by htouil            #+#    #+#             */
-/*   Updated: 2024/07/23 16:34:17 by htouil           ###   ########.fr       */
+/*   Updated: 2024/08/06 19:58:48 by htouil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 int	is_empty_string(std::string line)
 {
 	std::string::iterator	it;
+
 	for (it = line.begin(); it != line.end(); it++)
 	{
 		if (!std::isspace(*it))
@@ -199,7 +200,7 @@ int		count_fractional_digits(double res)
 	return (n);
 }
 
-bool	pair_compare(const std::pair<std::string, double> &pair,const std::string &date)
+bool	pair_compare(const std::pair<std::string, double> &pair, const std::string &date)
 {
 	return (pair.first < date);
 }
@@ -242,8 +243,8 @@ void	parse_display_input(std::ifstream &inputfile, list databse)
 	title = split_elements(line, '|');
 	if (strcmp(title[0], "date") || strcmp(title[1], "value"))
 	{
-		delete_arr(title);
 		std::cerr << RED << "Wrong file content!" << RESET << std::endl;
+		delete_arr(title);
 		exit(1);
 	}
 	delete_arr(title);

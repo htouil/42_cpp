@@ -6,7 +6,7 @@
 /*   By: htouil <htouil@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/23 21:23:18 by htouil            #+#    #+#             */
-/*   Updated: 2024/08/06 03:55:40 by htouil           ###   ########.fr       */
+/*   Updated: 2024/08/06 18:55:59 by htouil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,7 +133,7 @@ void	sort_n_display(deque &dq, vector &vec)
 		std::cout << dq[i] << " ";
 	std::cout << std::endl;
 	elapse_time = (static_cast<double>(end1) - static_cast<double>(start1));
-	std::cout << "Time to process a range of " << dq.size() << " with std::deque : " << elapse_time << " us" << std::endl;
+	std::cout << "Time to process a range of " << YELLOW << dq.size() << RESET << " with std::deque : " << CRIMSON << elapse_time << " us" << RESET << std::endl;
 	elapse_time = (static_cast<double>(end2) - static_cast<double>(start2));
-	std::cout << "Time to process a range of " << dq.size() << " with std::vector : " << elapse_time << " us" << std::endl;
+	std::cout << "Time to process a range of " << YELLOW << dq.size() << RESET << " with std::vector : " << CRIMSON << elapse_time << " us" << RESET << std::endl;
 }
